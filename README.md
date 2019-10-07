@@ -1,3 +1,6 @@
 # Better_Science_Instrument
 ------
-- เพื่อพ่อโร่
+- Libraries ที่ใช้
+  - react
+  - bootstrap
+  - reactstrap
