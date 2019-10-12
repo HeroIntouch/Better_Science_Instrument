@@ -1,6 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Theme from './theme';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Router,Route,Link,browserHistory} from 'react-router';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <Router history={browserHistory}>
+        {/* <Route path="/homepage" component={homepage}/>
+        <Route path="/product" component={Product}/>
+        <Route path="/user" component={User}/> */}
+        <Route path="/theme" component={Theme}/>
+    </Router>,document.getElememtByID('root')
+    );
