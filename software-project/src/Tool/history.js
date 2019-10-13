@@ -15,9 +15,11 @@ const ModalExample = (props) => {
   return (
     <div>
         <br></br>
-      <h2>  พันธกิจ </h2>
+        <h2 >  พันธกิจ </h2>
       <br></br>
-      <Button outline color="secondary" onClick={toggle}  bolck style = {{height: 400}} block>Edit</Button>
+      <Button outline color="secondary" onClick={toggle}  bolck style = {{height: 400}} block>
+        Edit
+      </Button>
       <Modal isOpen={modal} toggle={toggle} className={className} style = {{height: 600, width: 600}}>
         <ModalHeader toggle={toggle}>Choose Picture</ModalHeader>
         <ModalBody>

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import NavBar from './Tool/navBar';
 import Logo from './Tool/edit_home';
 import Promotion from './Tool/promotion';
 import History from './Tool/history'
 import Us from './Tool/aboutus'
-import Summit from './Tool/summit'
+ import Summit from './Tool/summit'
 import Set from './Tool/SetButton1'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, CustomInput, Form, FormGroup, Label } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, CustomInput, Form, FormGroup, Label, Popover, PopoverHeader, PopoverBody} from 'reactstrap';
 import Plus from './Tool/Plus-PNG-Image.png';
 
 
@@ -17,6 +17,7 @@ function App() {
     
     <div >
     <NavBar/>
+    <br></br>
     <Set/>
     <div style = {{padding: 20}}>
     <Logo/>
@@ -27,8 +28,7 @@ function App() {
     </div>
     <div align="center">
     <Summit/>
-</div>
-
+   </div>
  
     </div>
 
@@ -38,3 +38,4 @@ function App() {
 }
 
 export default App;
+
