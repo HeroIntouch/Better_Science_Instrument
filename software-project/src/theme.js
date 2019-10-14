@@ -8,7 +8,7 @@ class Theme extends Component {
   render(){
     return (
       <div>
-        <NavBar/><br/>
+        <NavBar Header="BetterExhibition"/><br/>
         <EditMenu/>
         <Contact/>
       </div>
