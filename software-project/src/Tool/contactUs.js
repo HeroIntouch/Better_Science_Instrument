@@ -1,12 +1,13 @@
 import React from 'react';
 import { Component } from 'react';
-import JumboTron from './JumboTron';
+import Alert from './Alert';
 
 class contactUs extends Component {
   render(){
+    let color = this.props.bgcolor;
     return (
       <div>
-        <JumboTron header="Contact Us / About us" content="I LOVE BEEF AND SASHIMI"/>
+        <Alert header="Contact Us / About us" content="I LOVE BEEF AND SASHIMI" color={color}/>
       </div>
     );
   }
