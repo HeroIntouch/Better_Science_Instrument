@@ -1,7 +1,7 @@
 import React, { useState, Component } from 'react';
 import NavBar from './Tool/navBar';
 import Logo from './Tool/edit_home';
-import Promotion from './Tool/promotion';
+import Promotion from './Tool/promotion_new';
 import History from './Tool/history'
 import Us from './Tool/aboutus'
  import Summit from './Tool/summit'

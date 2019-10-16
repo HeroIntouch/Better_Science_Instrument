@@ -14,7 +14,7 @@ const ModalExample = (props) => {
 
   return (
     <div>
-        <br></br>
+        {/* <br></br> */}
         <h2 >  พันธกิจ </h2>
       <br></br>
       <Button outline color="secondary" onClick={toggle}  bolck style = {{height: 400}} block>
