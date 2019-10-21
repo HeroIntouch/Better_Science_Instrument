@@ -31,7 +31,7 @@ export default class Example extends React.Component {
     return (
       <div>
         <Navbar color={this.props.bgcolor} light expand="md">
-          <NavbarBrand href="#"><div style={{color:txColor}}>{this.props.logo}</div></NavbarBrand>
+          <NavbarBrand href="/"><div style={{color:txColor}}>{this.props.logo}</div></NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
