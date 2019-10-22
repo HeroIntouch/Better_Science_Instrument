@@ -17,7 +17,7 @@ const ModalExample = (props) => {
         {/* <br></br> */}
         <h2 >  พันธกิจ </h2>
       <br></br>
-      <Button outline color="secondary" onClick={toggle}  bolck style = {{height: 400}} block>
+      {/* <Button outline color="secondary" onClick={toggle}  bolck style = {{height: 400}} block>
         Edit
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className} style = {{height: 600, width: 600}}>
@@ -31,7 +31,11 @@ const ModalExample = (props) => {
         <ModalFooter>
           <Button  outline color="secondary" onClick={toggle}>SUMMIT</Button>
         </ModalFooter>
-      </Modal>
+      </Modal> */}
+     
+        <Button outline color="secondary" onClick={toggle}  bolck style = {{height: 400}} block>
+        <input type = "file"/>
+      </Button>
     </div>
   );
 }
