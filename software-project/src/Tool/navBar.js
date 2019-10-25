@@ -11,6 +11,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -27,36 +28,34 @@ export default class Example extends React.Component {
     });
   }
   render() {
+    let txColor = this.props.txColor;
     return (
       <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <Navbar color={this.props.bgcolor} light expand="md">
+          <Link to='/'><NavbarBrand><div style={{color:txColor}}>{this.props.logo}</div></NavbarBrand></Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-              </NavItem>
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
+                <DropdownToggle nav caret style={{color:txColor}}>
+                  Item list
                 </DropdownToggle>
                 <DropdownMenu right>
                   <DropdownItem>
-                    Option 1
+                    1
                   </DropdownItem>
                   <DropdownItem>
-                    Option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
+                    2
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
+              <NavItem>
+                <NavLink href="#"><div style={{color:txColor}}>{this.props.log}</div></NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#"><div style={{color:txColor}}>Search</div></NavLink>
+              </NavItem>
+              
             </Nav>
           </Collapse>
         </Navbar>
