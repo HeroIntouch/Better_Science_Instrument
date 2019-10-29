@@ -1,8 +1,8 @@
 import React from 'react';
-import NavBar from './Tool/navBar';
-import Contact from './Tool/contactUs';
-import EditMenu from './Tool/editMenu';
-import './Tool/Tool.css';
+import NavBar from './Theme/Tool/navBar';
+import Contact from './Theme/Tool/contactUs';
+import EditMenu from './Theme/Tool/editMenu';
+import './Theme/Tool/Tool.css';
 import { useSelector } from 'react-redux';
 
 const Homepage = () => {

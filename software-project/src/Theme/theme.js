@@ -5,7 +5,7 @@ import EditMenu from './Tool/editMenu';
 import { Button } from 'reactstrap';
 import './Tool/Tool.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { changePrimary, changeSecondary, changeDanger, changeDark, changeInfo, changeLight, changeSuccess, changeWarning } from './actions';
+import { changePrimary, changeSecondary, changeDanger, changeDark, changeInfo, changeLight, changeSuccess, changeWarning } from '../actions';
 
 function Theme() {
   const BGcolor = useSelector(state => state.BGcolor);
