@@ -36,7 +36,7 @@ function App() {
         <Us />
 
       </div>
-      <div align="center">
+      <div align="center" style={{margin: "1cm"}}>
         <Summit />
       </div>
 

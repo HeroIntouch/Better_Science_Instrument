@@ -17,7 +17,7 @@ const ModalExample = (props) => {
         <br></br>
       <h2> Contract US</h2>
       <br></br>
-      <Button outline color="secondary" onClick={toggle} style = {{height: 150}} block>Edit</Button>
+      <Button outline color="secondary" onClick={toggle} style = {{height: 150, padding:"1cm"}} block>Edit</Button>
       <Modal isOpen={modal} toggle={toggle} className={className} style = {{height: 600, width: 600}}>
         <ModalHeader toggle={toggle}>Choose Picture</ModalHeader>
         <ModalBody>

@@ -7,7 +7,7 @@ export default class Example extends React.Component {
   render() {
     return (
       <div>
-        <Button color="secondary" style={{ height: 50 }} onClick={this.fileUploadHandler}> SUMMIT </Button>{' '}
+        <Button color="success" style={{ height: 50 }} onClick={this.fileUploadHandler}> SUMMIT </Button>{' '}
       </div>
 
     );
