@@ -2,3 +2,5 @@
 --------
 - reactstrap
 - react-router
+- redux
+- firebase
