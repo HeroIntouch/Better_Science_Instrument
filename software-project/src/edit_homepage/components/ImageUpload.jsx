@@ -69,12 +69,8 @@ class ImageUpload extends Component {
           };
 
         const fn = () => {
-          this.toggle()
-          if(this.state.check ){
             this.handleUpload()
-          }
-       
-           
+            this.toggle()
         }
         
         return(
@@ -83,14 +79,14 @@ class ImageUpload extends Component {
             //     <Button onClick={this.handleUpload} > Upload </Button>
             // </div>
             <div >
-            <h2> Logo </h2>
+            <h2> Promotion </h2>
              <div style = {{padding: 30}} >
              <Button outline color="secondary" onClick={this.toggle.bind(this)} style = {{height: 160, width: 160}}>
              <center>
              <img src={this.state.url || Plus} alt="Uploaded images" style = {{height: 140, width: 140}}/>
              </center>
              </Button>
-            <Modal isOpen={this.state.modal} toggle={this.toggle.bind(this)} className={this.className} style = {{height: 600, width: 600}}>
+            <Modal isOpen={this.state.modal} toggle={this.toggle.bind(this)} className={this.className} style = {{height: 600, width: 600,}}>
               <ModalHeader toggle={this.toggle.bind(this)}>Choose Picture</ModalHeader>
               <ModalBody>
                 <FormGroup>
@@ -103,6 +99,7 @@ class ImageUpload extends Component {
                 <Button  outline color="secondary" onClick={() => fn()}>SUMMIT</Button>
               </ModalFooter>
             </Modal>
+
              </div>
               </div>
  

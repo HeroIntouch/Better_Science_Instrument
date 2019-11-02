@@ -1,11 +1,11 @@
 // import React from 'react';
-import { Button, Card, CardBody, CardText, CardGroup, CardTitle, Alert , Modal, ModalHeader, ModalBody, ModalFooter, CustomInput, Form, FormGroup, Label } from 'reactstrap';
+import { Button, Card, CardBody, CardText, CardGroup, CardTitle, Alert, Modal, ModalHeader, ModalBody, ModalFooter, CustomInput, Form, FormGroup, Label } from 'reactstrap';
 import Plus from './Plus-PNG-Image.png';
 import Pro from './5b.gif';
 
 
 // export default class Example extends React.Component {
- 
+
 
 //   render() {
 //     return (
@@ -30,7 +30,7 @@ import Pro from './5b.gif';
 //       </Card> */}
 //      </div> 
 
-     
+
 
 //      </div>   
 //      );
@@ -38,7 +38,7 @@ import Pro from './5b.gif';
 // }
 
 import React, { useState } from 'react';
- 
+
 
 const AlertExample = (props) => {
   const {
@@ -54,13 +54,13 @@ const AlertExample = (props) => {
   //const toggle2 = () => setVisible(!visible);
 
   return (
-  
-      <div>
-             <br></br>
-              <h3> Promotion </h3>
-            <div style = {{padding: 30}}>
 
-{/*          
+    <div>
+      <br></br>
+      <h3> Promotion </h3>
+      <div style={{ padding: 30 }}>
+
+        {/*          
             <Button  outline color="secondary" style = {{height: 100 , width: 150}} >
       
              <img src= {Plus} alt = "Plus" width="40" height="40" align="absmiddle" /> 
@@ -68,26 +68,26 @@ const AlertExample = (props) => {
              </Button>
               */}
 
-<Button outline color="secondary" onClick={toggle} style = {{height: 150, width: 150}}>Edit</Button>
-      <Modal isOpen={modal} toggle={toggle} className={className} style = {{height: 600, width: 600}}>
-        <ModalHeader toggle={toggle}>Choose Picture</ModalHeader>
-        <ModalBody>
-          <FormGroup>
-        <Label for="exampleCustomFileBrowser">File Browser</Label>
-        <CustomInput type="file" id="exampleCustomFileBrowser" name="customFile" label = "choose" />
-      </FormGroup>
-        </ModalBody>
-        <ModalFooter>
-          <Button  outline color="secondary" onClick={toggle2}>SUMMIT</Button>
-          
-        </ModalFooter>
-      </Modal>
-  
-            </div> 
-      
-           
-      
-           </div>   
+        <Button outline color="secondary" onClick={toggle} style={{ height: 150, width: 150 }}>Edit</Button>
+        <Modal isOpen={modal} toggle={toggle} className={className} style={{ height: 600, width: 600 }}>
+          <ModalHeader toggle={toggle}>Choose Picture</ModalHeader>
+          <ModalBody>
+            <FormGroup>
+              <Label for="exampleCustomFileBrowser">File Browser</Label>
+              <CustomInput type="file" id="exampleCustomFileBrowser" name="customFile" label="choose" />
+            </FormGroup>
+          </ModalBody>
+          <ModalFooter>
+            <Button outline color="secondary" onClick={toggle2}>SUMMIT</Button>
+
+          </ModalFooter>
+        </Modal>
+
+      </div>
+
+
+
+    </div>
   );
 }
 
