@@ -9,13 +9,14 @@ class ImageUpload extends Component {
         this.state = { 
             image: null,
             url: '',
-            modal: false,
-            check: false
         }
         this.handleChange = this
             .handleChange
             .bind(this);
             this.handleUpload = this.handleUpload.bind(this); 
+    }
+    state = {
+        modal: true
     }
 
     toggle(){
@@ -31,13 +32,11 @@ class ImageUpload extends Component {
     handleChange = e => {
         if (e.target.files[0]) {
           const image = e.target.files[0];
-          this.setState(() => ({image , check : !this.state.check }));
-
+          this.setState(() => ({image}));
         }
       }
 
     handleUpload = () => {
-
         const {image} = this.state;
         const uploadTask = storage.ref(`images/${image.name}`).put(image);
         uploadTask.on('state_changed', 
@@ -69,12 +68,8 @@ class ImageUpload extends Component {
           };
 
         const fn = () => {
-          this.toggle()
-          if(this.state.check ){
             this.handleUpload()
-          }
-       
-           
+            this.toggle()
         }
         
         return(
@@ -83,9 +78,47 @@ class ImageUpload extends Component {
             //     <Button onClick={this.handleUpload} > Upload </Button>
             // </div>
             <div >
-            <h2> Logo </h2>
+            <h2> Promotion </h2>
              <div style = {{padding: 30}} >
              <Button outline color="secondary" onClick={this.toggle.bind(this)} style = {{height: 160, width: 160}}>
+             <center>
+             <img src={this.state.url || Plus} alt="Uploaded images" style = {{height: 140, width: 140}}/>
+             </center>
+             </Button>
+            <Modal isOpen={this.state.modal} toggle={this.toggle.bind(this)} className={this.className} style = {{height: 600, width: 600,}}>
+              <ModalHeader toggle={this.toggle.bind(this)}>Choose Picture</ModalHeader>
+              <ModalBody>
+                <FormGroup>
+              <Label for="exampleCustomFileBrowser">File Browser</Label>
+              <CustomInput type="file" id="exampleCustomFileBrowser" name="customFile" label = "choose" onChange={this.handleChange} />
+            </FormGroup>
+                {/* <input type = "file" onChange={this.handleChange} /> */}
+              </ModalBody>
+              <ModalFooter>
+                <Button  outline color="secondary" onClick={() => fn()}>SUMMIT</Button>
+              </ModalFooter>
+            </Modal>
+
+            <Button outline color="secondary" onClick={this.toggle.bind(this)} style = {{height: 160, width: 160,  margin: 20}}>
+             <center>
+             <img src={this.state.url || Plus} alt="Uploaded images" style = {{height: 140, width: 140}}/>
+             </center>
+             </Button>
+            <Modal isOpen={this.state.modal} toggle={this.toggle.bind(this)} className={this.className} style = {{height: 600, width: 600}}>
+              <ModalHeader toggle={this.toggle.bind(this)}>Choose Picture</ModalHeader>
+              <ModalBody>
+                <FormGroup>
+              <Label for="exampleCustomFileBrowser">File Browser</Label>
+              <CustomInput type="file" id="exampleCustomFileBrowser" name="customFile" label = "choose" onChange={this.handleChange} />
+            </FormGroup>
+                {/* <input type = "file" onChange={this.handleChange} /> */}
+              </ModalBody>
+              <ModalFooter>
+                <Button  outline color="secondary" onClick={() => fn()}>SUMMIT</Button>
+              </ModalFooter>
+            </Modal>
+
+              <Button outline color="secondary" onClick={this.toggle.bind(this)} style = {{height: 160, width: 160}}>
              <center>
              <img src={this.state.url || Plus} alt="Uploaded images" style = {{height: 140, width: 140}}/>
              </center>
