@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import Theme from './Theme/theme';
 import Homepage from './homepage';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { createStore } from 'redux';
 import allReducer from './reducer';
@@ -25,4 +24,3 @@ ReactDOM.render(
             </Switch>
         </Router>
     </Provider>, document.getElementById('root'));
-serviceWorker.unregister();
