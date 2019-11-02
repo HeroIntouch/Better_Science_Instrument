@@ -15,14 +15,15 @@ function Theme() {
     <div>
       <NavBar logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} />
       <EditMenu page="theme" bgcolor={BGcolor} />
-      <center style={{ padding:"2cm 0cm" }}>
+      <center style={{ padding:"0cm 0cm 2cm 0cm" }}>
+        <h1 style={{padding:"1cm"}}>Choose your color!</h1> 
         <Container>
-          <Row>
+          <Row >
             <Col lg="4" ><Modal passChange="1" title="Do you want to change color to primary?" color="primary" buttonLabel="Primary" ></Modal></Col>
             <Col lg="4"><Modal passChange="2" title="Do you want to change color to secondary?" color="secondary" buttonLabel="Secondary" ></Modal></Col>
             <Col lg="4"><Modal passChange="3" title="Do you want to change color to sucess?" color="success" buttonLabel="Success" ></Modal></Col>
           </Row>
-          <Row>
+          <Row style={{ padding:"3px 0px" }}>
             <Col lg="4"><Modal passChange="4" title="Do you want to change color to danger?" color="danger" buttonLabel="Danger" ></Modal></Col>
             <Col lg="4"><Modal passChange="5" title="Do you want to change color to warning?" color="warning" buttonLabel="Warning" ></Modal></Col>
             <Col lg="4"><Modal passChange="6" title="Do you want to change color to info?" color="info" buttonLabel="Info" ></Modal></Col>
