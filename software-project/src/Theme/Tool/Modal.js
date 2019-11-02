@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './Tool.css';
 import { useDispatch } from 'react-redux';
-import { changePrimary, changeSecondary, changeDanger, changeDark, changeInfo, changeLight, changeSuccess, changeWarning, changeGradient } from '../../actions';
+import { changePrimary, changeSecondary, changeDanger, changeDark, changeInfo, changeLight, changeSuccess, changeWarning } from '../../actions';
 
 const ModalExample = (props) => {
   const {
