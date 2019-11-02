@@ -7,14 +7,47 @@ import { Link } from 'react-router-dom';
 class editMenu extends Component {
   render(){
     let color = this.props.bgcolor;
-    return (
-      <center>
-        <Link to='/homepage'><Button color={color} className="button">Homepage</Button></Link>
-        <Button color={color} className="button">Product</Button>
-        <Button color={color} className="button">User</Button>
-        <Link to='/'><Button color={color} className="button">Theme</Button></Link>
-      </center>
-    );
+    // edit theme page
+    if (this.props.page === "theme") {
+      return (
+        <center className = "BGeditMenu" style={{padding: "0.5cm"}}>
+          <Button outline color={color} className="button">Homepage</Button>
+          <Button outline color={color} className="button">Product</Button>
+          <Button outline color={color} className="button">User</Button>
+          <Link to='/'><Button color={color} className="button">Theme</Button></Link>
+        </center>
+      );
+    }
+    else if (this.props.page === "homepage") {
+      return (
+        <center className = "BGeditMenu" style={{padding: "0.5cm"}}>
+          <Button color={color} className="button">Homepage</Button>
+          <Button outline color={color} className="button">Product</Button>
+          <Button outline color={color} className="button">User</Button>
+          <Link to='/'><Button outline color={color} className="button">Theme</Button></Link>
+        </center>
+      );
+    }
+    else if (this.props.page === "product") {
+      return (
+        <center className = "BGeditMenu" style={{padding: "0.5cm"}}>
+          <Button outline color={color} className="button">Homepage</Button>
+          <Button color={color} className="button">Product</Button>
+          <Button outline color={color} className="button">User</Button>
+          <Link to='/'><Button outline color={color} className="button">Theme</Button></Link>
+        </center>
+      );
+    }
+    else if (this.props.page === "user") {
+      return (
+        <center className = "BGeditMenu" style={{padding: "0.5cm"}}>
+          <Button outline color={color} className="button">Homepage</Button>
+          <Button outline color={color} className="button">Product</Button>
+          <Button color={color} className="button">User</Button>
+          <Link to='/'><Button outline color={color} className="button">Theme</Button></Link>
+        </center>
+      );
+    }
   }
 }
 

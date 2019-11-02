@@ -13,12 +13,12 @@ function Theme() {
 
   return (
     <div>
-      <NavBar logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} /><br/>
-      <EditMenu bgcolor={BGcolor} />
+      <NavBar logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} />
+      <EditMenu page="theme" bgcolor={BGcolor} />
       <center style={{ padding:"2cm 0cm" }}>
         <Container>
           <Row>
-            <Col lg="4"><Modal passChange="1" title="Do you want to change color to primary?" color="primary" buttonLabel="Primary" ></Modal></Col>
+            <Col lg="4" ><Modal passChange="1" title="Do you want to change color to primary?" color="primary" buttonLabel="Primary" ></Modal></Col>
             <Col lg="4"><Modal passChange="2" title="Do you want to change color to secondary?" color="secondary" buttonLabel="Secondary" ></Modal></Col>
             <Col lg="4"><Modal passChange="3" title="Do you want to change color to sucess?" color="success" buttonLabel="Success" ></Modal></Col>
           </Row>
