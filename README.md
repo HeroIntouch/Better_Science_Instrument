@@ -1,3 +1,7 @@
 # Better_Science_Instrument
 ------
-- Only POND
+- Libraries ที่ใช้
+  - react
+  - bootstrap
+  - reactstrap
+
