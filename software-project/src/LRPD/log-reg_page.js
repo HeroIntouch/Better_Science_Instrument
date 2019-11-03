@@ -32,6 +32,7 @@ class App extends React.Component {
     const { isLogginActive } = this.state;
     const current = isLogginActive ? "Register" : "Login";
     const currentActive = isLogginActive ? "login" : "register";
+    const codeBG = this.props.codeBGcolor;
     return (
       <div className="App">
         <div className="login">
@@ -43,7 +44,8 @@ class App extends React.Component {
               <Register containerRef={ref => (this.current = ref)} />
             )}
           </div>
-          <RightSide
+          <RightSide 
+            codeBGcolor={codeBG}
             current={current}
             currentActive={currentActive}
             containerRef={ref => (this.rightSide = ref)}
@@ -59,6 +61,7 @@ const RightSide = props => {
   return (
     <div
       className="right-side"
+      style={{backgroundColor:props.codeBGcolor}}
       ref={props.containerRef}
       onClick={props.onClick}
     >
