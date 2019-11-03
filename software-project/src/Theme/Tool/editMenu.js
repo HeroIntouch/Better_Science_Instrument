@@ -11,7 +11,7 @@ class editMenu extends Component {
     if (this.props.page === "theme") {
       return (
         <center className = "BGeditMenu" style={{padding: "0.5cm"}}>
-          <Link to='/homepage'><Button outline color={color} className="button">Homepage</Button></Link>
+          <Link to='/edithomepage'><Button outline color={color} className="button">Homepage</Button></Link>
           <Button outline color={color} className="button">Product</Button>
           <Button outline color={color} className="button">User</Button>
           <Link to='/'><Button color={color} className="button">Theme</Button></Link>
