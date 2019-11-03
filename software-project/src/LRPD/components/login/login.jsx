@@ -64,7 +64,7 @@ export class Login extends React.Component{
 
     if (currentUser) {
         return (
-        <div>
+        <div>00
             <p>Hello {currentUser.email}</p>
             <button onClick={this.logout}>Logout</button>
         </div>
