@@ -75,11 +75,11 @@ export class Login extends React.Component {
     return (
       <div className="base-container" >
         <label className="header">Login</label>
+        <div className="image">
+          <img src={loginImg} />
+        </div>
         <form onSubmit={this.onSubmit}>
           <div className="content">
-            <div className="image">
-              <img src={loginImg} />
-            </div>
             <div className="form">
               <div className="form-group">
                 <label htmlFor="username">Email</label>
@@ -92,11 +92,11 @@ export class Login extends React.Component {
             </div>
           </div>
           {message ? <p className="help is-danger">{message}</p> : null}
-          <div className="field is-grouped" style={{ marginLeft: 90 }}>
+          <div className="field is-grouped">
             <div className="control">
               <button className="button is-link">Submit</button>
             </div>
-            <div className="control" style={{ marginLeft: 50 }}>
+            <div className="control" >
               <button className="button is-text">Cancel</button>
             </div>
           </div>

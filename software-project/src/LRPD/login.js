@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from '../Theme/Tool/navBar';
 import LoginReg from "./log-reg_page";
 import { useSelector } from 'react-redux';
+import ContactUs from '../Theme/Tool/contactUs';
 
 function App() {
   const BGcolor = useSelector(state => state.BGcolor);
@@ -9,8 +10,9 @@ function App() {
   const codeBGcolor = useSelector(state => state.codeBGcolor);
   return (
     <div>
-    <NavBar logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} />
-    <LoginReg codeBGcolor={codeBGcolor}/>
+    <NavBar logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor}/><br/>
+    <LoginReg codeBGcolor={codeBGcolor}/><br/>
+    <ContactUs bgcolor={BGcolor}/>
   </div>
   );
 }
