@@ -1,5 +1,6 @@
-import '../src/LRPD/index.css' ;
-import Homepage from './LRPD/homepage';
+import Login from './login';
+import DownloadUser from './downloadUser';
+import ProfileUser from './profileUser';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export { Homepage }
+export { Login, DownloadUser, ProfileUser }

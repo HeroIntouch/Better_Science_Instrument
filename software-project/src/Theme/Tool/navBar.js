@@ -50,10 +50,10 @@ export default class Example extends React.Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <Link to="/login"><NavbarBrand><div style={{color:txColor}}>{this.props.log}</div></NavbarBrand></Link>
+                <Link to="login"><NavLink><div style={{color:txColor}}>{this.props.log}</div></NavLink></Link>
               </NavItem>
               <NavItem>
-                <NavLink href="#"><div style={{color:txColor}}>Search</div></NavLink>
+                <NavLink><div style={{color:txColor}}>Search</div></NavLink>
               </NavItem>
               
             </Nav>

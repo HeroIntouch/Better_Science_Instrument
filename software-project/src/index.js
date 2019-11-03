@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { createStore } from 'redux';
 import allReducer from './reducer';
 import { Provider } from 'react-redux';
-import Login from './LRPD/homepage';
+import { Login, DownloadUser, ProfileUser } from './LRPD';
 import EditHomepage from './edit_homepage/App';
 
 const store = createStore(
@@ -19,7 +19,9 @@ ReactDOM.render(
         <Router>
             <Switch>
                 <Route path="/" exact component={EditTheme} />
+                <Route path="/profileUser" component={ProfileUser} />
                 <Route path="/login" component={Login} />
+                <Route path="/downloadUser" component={DownloadUser} />
                 <Route path="/homepage" component={EditHomepage} />
             </Switch>
         </Router>
