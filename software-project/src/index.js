@@ -19,6 +19,7 @@ ReactDOM.render(
         <Router>
             <Switch>
                 <Route path="/" exact component={EditTheme} />
+                <Route path="/login" component={Login} />
                 <Route path="/homepage" component={EditHomepage} />
             </Switch>
         </Router>
