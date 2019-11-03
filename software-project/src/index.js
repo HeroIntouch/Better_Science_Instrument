@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { Login, DownloadUser, ProfileUser } from './LRPD';
 import EditHomepage from './edit_homepage/App';
 import Homepage from './Homepage/App';
-import Product from './Product/Product';
+import { Product } from './Product/Product';
 
 const store = createStore(
     allReducer,
