@@ -44,9 +44,9 @@ export default class Example extends React.Component {
                   <Link to='/product'><DropdownItem>
                     1
                   </DropdownItem></Link>
-                  <DropdownItem>
-                    2
-                  </DropdownItem>
+                  <Link to='/profileUser'><DropdownItem>
+                    proflieUser
+                  </DropdownItem></Link>
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
