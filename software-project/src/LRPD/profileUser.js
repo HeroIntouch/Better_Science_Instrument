@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from '../Theme/Tool/navBar';
 import { useSelector } from 'react-redux';
 import {ProfileUser} from "./components/edit_profileuser/profile_user"
-import {ImageUpload} from "./components/edit_profileuser/imgupload"
+// import {ImageUpload} from "./components/edit_profileuser/imgupload"
 
 
 
@@ -13,7 +13,7 @@ function App() {
     <div>
     <NavBar logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} />
     <ProfileUser/>
-    <ImageUpload/>
+    {/* <ImageUpload/> */}
   </div>
   );
 }
