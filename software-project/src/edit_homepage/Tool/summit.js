@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button } from 'reactstrap';
-import axios from 'axios'
 
 export default class Example extends React.Component {
 

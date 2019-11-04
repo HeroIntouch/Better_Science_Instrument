@@ -1,6 +1,8 @@
 import React from "react" ;
 import loginImg from "../../../LRPD/login.svg";
 import {auth} from '../../firebase/index'
+// import ReactDOM from 'react-dom' ;
+
 
 export class Login extends React.Component{
     constructor(props) {
@@ -9,7 +11,7 @@ export class Login extends React.Component{
             email: '',
             password: '',
             currentUser: null,
-            message: ''
+            message: '',
           }
     }
 
@@ -61,21 +63,43 @@ export class Login extends React.Component{
 
     render() {
     const { message, currentUser } = this.state
+    var dataEmailAdmin = ["asdf@hotmail.com" , "hero@hotmail.com"] ;
+    var dataEmailUser = ["user1@hotmail.com" , "as@hotmail.com"] ;
 
     if (currentUser) {
+      console.log("back : " + currentUser);
+
+      var admin_state = dataEmailAdmin.indexOf(currentUser.email)
+      var user_state = dataEmailUser.indexOf(currentUser.email)
+      
+      if(admin_state != -1){
         return (
-        <div>00
+        <div>
             <p>Hello {currentUser.email}</p>
+            <p>Hello Admin</p>
             <button onClick={this.logout}>Logout</button>
+          
         </div>
         )
+      }
+
+      else if(user_state != -1){
+        return (
+        <div>
+            <p>Hello {currentUser.email}</p>
+            <p>Hello User</p>
+            <button onClick={this.logout}>Logout</button>
+          
+        </div>
+        )
+      }
     }
     
     
         return (
             <section className= "base-container" >
             <label className= "header">Login</label>
-            <form onSubmit = {this.onSubmit}>
+            <form onSubmit = {this.onSubmit} id = 'hero'>
             <div className= "content">
                 <div className="image">
                     <img src={loginImg} />    
