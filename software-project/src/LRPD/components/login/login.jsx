@@ -1,6 +1,8 @@
 import React, { useReducer } from "react";
 import loginImg from "../../../LRPD/login.svg";
 import { auth } from '../../firebase/index'
+import { useDispatch } from 'react-redux';
+import { changeUserStateLogin, changeAdminStateLogin, changeUserStateLogout, changeAdminStateLogout } from '../../../actions';
 
 var admin_state = -1;
 var user_state = -1;
@@ -82,7 +84,7 @@ class Login extends React.Component {
           <div>
             <p>Hello {currentUser.email}</p>
             <p>Hello Admin</p>
-            <button onClick={this.logout}>Logout</button>
+            <button name="click_logout" onClick={this.logout}>Logout</button>
 
           </div>
         )
@@ -93,15 +95,12 @@ class Login extends React.Component {
           <div>
             <p>Hello {currentUser.email}</p>
             <p>Hello User</p>
-            <button onClick={this.logout}>Logout</button>
+            <button name="click_logout" onClick={this.logout}>Logout</button>
 
           </div>
         )
       }
     }
-
-
-
 
     return (
       <div className="base-container" >
@@ -118,7 +117,7 @@ class Login extends React.Component {
               </div>
               <div className="form-group">
                 <label htmlFor="password">Password</label>
-                <input type="password" name="password" placeholder="password" onChange={this.onChange} />
+                <input name="password" type="password" name="password" placeholder="password" onChange={this.onChange} />
               </div>
             </div>
           </div>
