@@ -1,23 +1,22 @@
 import React from 'react';
 import './Product.css';
-import NavBar from '../Homepage/navbar/navBar';
-import TableCategory from './TableCategory';
+import NavBar from '../Theme/Tool/navBar';
 import TableProduct from './TableProduct';
 import { Row, Col } from 'reactstrap';
 import { Table } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 
-class Product extends React.Component{
-    render(){
-        return(
-            <div>
-                <NavBar />
-                <div className='page'>
-                    <div><TableCategory /></div>
-                    <div><TableProduct /></div>
-                </div>
+function Product(){
+    const BGcolor = useSelector(state => state.BGcolor);
+    const TXcolor = useSelector(state => state.TXcolor);
+    return (
+        <div>
+            <NavBar logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} />
+            <div className='page'>
+                <div><TableProduct /></div>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
-export default Product;
+export { Product };

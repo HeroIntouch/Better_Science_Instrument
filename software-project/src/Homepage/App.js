@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import NavBar from './navbar/navBar'
+import NavBar from '../Theme/Tool/navBar'
 import Promotion from './promotion/promotion'
 import Media from './media/media'
 import Generate from '../Generate/Generate'
@@ -33,13 +33,12 @@ class App extends React.Component {
 
     return (
       <div>
-        <div><NavBar /></div>
+        
         <div className='promo'><Promotion s1 = {this.state.Mission}/></div>
         {/* <div className = 'tabs'><Tabs /></div> */}
         <div className='tabs'><Media /></div>
         <div className='contact' >{this.state.Mission}</div>
         <div className='contact'>{this.state.Contact}</div>
-        <Generate></Generate>
       </div>
     );
   }

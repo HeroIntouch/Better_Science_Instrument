@@ -32,7 +32,7 @@ export default class Example extends React.Component {
     return (
       <div>
         <Navbar color={this.props.bgcolor} light expand="md">
-          <Link to='/'><NavbarBrand><div style={{color:txColor}}>{this.props.logo}</div></NavbarBrand></Link>
+          <Link to='/homepage'><NavbarBrand><div style={{color:txColor}}>{this.props.logo}</div></NavbarBrand></Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -41,19 +41,19 @@ export default class Example extends React.Component {
                   Item list
                 </DropdownToggle>
                 <DropdownMenu right>
-                  <DropdownItem>
+                  <Link to='/product'><DropdownItem>
                     1
-                  </DropdownItem>
-                  <DropdownItem>
-                    2
-                  </DropdownItem>
+                  </DropdownItem></Link>
+                  <Link to='/profileUser'><DropdownItem>
+                    proflieUser
+                  </DropdownItem></Link>
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <Link to="login"><NavLink><div style={{color:txColor}}>{this.props.log}</div></NavLink></Link>
+                <Link to="/login"><NavLink><div style={{color:txColor}}>{this.props.log}</div></NavLink></Link>
               </NavItem>
               <NavItem>
-                <NavLink><div style={{color:txColor}}>Search</div></NavLink>
+              <Link to="/"><NavLink><div style={{color:txColor}}>Search</div></NavLink></Link>
               </NavItem>
               
             </Nav>
