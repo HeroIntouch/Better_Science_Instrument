@@ -10,6 +10,8 @@ import { Login, DownloadUser, ProfileUser } from './LRPD';
 import EditHomepage from './edit_homepage/App';
 import Homepage from './Homepage';
 import { Product } from './Product/Product';
+import Test from './Animation/index.js'
+import Generation from './Generate/Generate';
 
 const store = createStore(
     allReducer,
@@ -20,7 +22,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router>
             <Switch>
-                <Route path="/" exact component={EditTheme} />
+                <Route path="/" exact component={Homepage} />
                 <Route path="/homepage" component={Homepage} />
                 <Route path="/product" component={Product} />
                 <Route path="/profileUser" component={ProfileUser} />
