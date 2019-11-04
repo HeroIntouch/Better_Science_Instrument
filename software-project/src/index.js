@@ -8,7 +8,7 @@ import allReducer from './reducer';
 import { Provider } from 'react-redux';
 import { Login, DownloadUser, ProfileUser } from './LRPD';
 import EditHomepage from './edit_homepage/App';
-import Homepage from './Homepage/App';
+import Homepage from './Homepage';
 import { Product } from './Product/Product';
 
 const store = createStore(

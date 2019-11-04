@@ -1,7 +1,6 @@
 import React from 'react';
 import './Product.css';
 import NavBar from '../Theme/Tool/navBar';
-import TableCategory from './TableCategory';
 import TableProduct from './TableProduct';
 import { Row, Col } from 'reactstrap';
 import { Table } from '@material-ui/core';
