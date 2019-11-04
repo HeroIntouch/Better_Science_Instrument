@@ -12,7 +12,7 @@ class editMenu extends Component {
       return (
         <center className = "BGeditMenu" style={{padding: "0.5cm"}}>
           <Link to='/edithomepage'><Button outline color={color} className="button">Homepage</Button></Link>
-          <Button outline color={color} className="button">Product</Button>
+          <Link to='/productedit'><Button outline color={color} className="button">Product</Button></Link>
           <Button outline color={color} className="button">User</Button>
           <Link to='/'><Button color={color} className="button">Theme</Button></Link>
         </center>

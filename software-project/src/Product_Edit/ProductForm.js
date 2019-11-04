@@ -3,7 +3,7 @@ import './ProductForm.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {Component} from 'react';
 import CreatableSelect from 'react-select/creatable';
-import {firebase , db } from './firebase'
+import {firebase } from '../firebase'
 
 export default class ProductForm extends Component {
   constructor( props ){
@@ -71,7 +71,7 @@ export default class ProductForm extends Component {
   };
   last=()=>{
     this.setState({success:!this.state.success})
-    if(!this.state.success){
+    if(this.state.success){
       window.location.reload();
     }
   }
@@ -106,7 +106,7 @@ export default class ProductForm extends Component {
       uploadTask.on('state_changed',(snapshot)=>{},(error)=>{console.log(error)},
       ()=>{
         firebase.storage().ref('Product').child(image.name).getDownloadURL().then(url => {
-          db.ref('Product/'+this.state.Catagory+'/'+this.state.Brand+'/'+this.state.Name+'/'+this.state.Version).set({
+          firebase.database().ref('Product/'+this.state.Catagory+'/'+this.state.Brand+'/'+this.state.Name+'/'+this.state.Version).set({
             Catagory: this.state.Catagory,
             Brand: this.state.Brand,
             Name: this.state.Name,
@@ -116,8 +116,7 @@ export default class ProductForm extends Component {
         })
       }
       )
-      
-
+      this.setState({success:!this.state.success});
     }
   }
   render(){
@@ -180,7 +179,7 @@ export default class ProductForm extends Component {
           </div>
         </div>
         </div>
-        <h>{this.state.Catagory} {this.state.Brand} {this.state.Name} {this.state.Version}</h>
+        {/* <h>{this.state.Catagory} {this.state.Brand} {this.state.Name} {this.state.Version}</h> */}
         <Button className='ButtSub' color ={bgcolor} onClick={this.Submit}>
               Submit
         </Button>

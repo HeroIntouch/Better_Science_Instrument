@@ -10,7 +10,7 @@ import { Login, DownloadUser, ProfileUser } from './LRPD';
 import EditHomepage from './edit_homepage/App';
 import Homepage from './Homepage';
 import { Product } from './Product/Product';
-
+import ProductEdit from './Product_Edit';
 const store = createStore(
     allReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -27,6 +27,7 @@ ReactDOM.render(
                 <Route path="/login" component={Login} />
                 <Route path="/downloadUser" component={DownloadUser} />
                 <Route path="/edithomepage" component={EditHomepage} />
+                <Route path="/productedit" component={ProductEdit} />
             </Switch>
         </Router>
     </Provider>, document.getElementById('root'));

@@ -3,7 +3,7 @@ import './Delete.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {Component} from 'react';
 import Select from 'react-select';
-import {firebase , db } from './firebase'
+import {firebase } from '../firebase'
 export default class ProductForm extends Component {
   constructor( props ){
     super(props);
@@ -13,19 +13,23 @@ export default class ProductForm extends Component {
       Name : null,
       Version : null,
       Show : false,
+      show2: false,
       CataOptions: [],
       BrandOptions: [],
       NameOptions: [],
       VersionOptions: [],
       BrandVal: null,
       NameVal: null,
-      VersionVal: null
+      VersionVal: null,
+      warning: ''
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleChange1 = this.handleChange1.bind(this)
     this.handleChange2 = this.handleChange2.bind(this)
     this.handleChange3 = this.handleChange3.bind(this)
     this.Submit = this.Submit.bind(this)
+    this.Permit = this.Permit.bind(this)
+    this.Allow = this.Allow.bind(this)
     let x = firebase.database().ref('Product').on('value', (data)=>{
       var BrandData = data.toJSON()
       if(BrandData!== null){var z = Object.keys(BrandData)
@@ -106,13 +110,11 @@ export default class ProductForm extends Component {
     if(newValue !== null){this.setState({Version: newValue.label,VersionVal:newValue});}
     else{this.setState({Version: null});}
   }
-  Submit() {
-    if(this.state.Catagory === null){
-      this.setState({Show : !this.state.Show})
-
-    }
-    else{
-      let path = ''
+  Permit(){
+    this.setState({show2: !this.state.show2})
+  }
+  Allow(){
+    let path = ''
       if(this.state.Version!==null){
         path = '/'+this.state.Version
       }
@@ -126,6 +128,24 @@ export default class ProductForm extends Component {
       console.log(path)
       firebase.database().ref(path).remove();
       window.location.reload();
+  }
+  Submit() {
+    if(this.state.Catagory === null){
+      this.setState({Show : !this.state.Show})
+    }
+    else{
+      this.setState({warning : 'Do you want '+this.state.Name+' '+this.state.Version+' to be delete?'})
+        if(this.state.Version===null){
+          this.setState({warning : 'Do you want '+this.state.Name+' and all version of it to be delete?'})
+        }
+        if(this.state.Name===null){
+          this.setState({warning : 'Do you want all item in '+this.state.Brand+' Brand to be delete?'})
+        }
+        if(this.state.Brand===null){
+          this.setState({warning : 'Do you want all item in '+this.state.Catagory+' Catagory to be delete?'})
+        }
+      console.log(this.state.warning)
+      this.setState({show2: true})
     }
   }
 
@@ -136,10 +156,19 @@ export default class ProductForm extends Component {
         <Modal isOpen={this.state.Show} toggle={this.Submit}>
         <ModalHeader toggle={this.Submit}>Error</ModalHeader>
         <ModalBody>
-          You didn't fill some input. 
+          You didn't fill Catagory. 
         </ModalBody>
         <ModalFooter>
           <Button color="secondary" onClick={this.Submit}>Cancel</Button>
+        </ModalFooter>
+      </Modal>
+      <Modal isOpen={this.state.show2} toggle={this.Permit}>
+        <ModalHeader toggle={this.Permit}>Permission</ModalHeader>
+        <ModalBody>
+          {this.state.warning}
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={this.Allow}>Allow</Button>
         </ModalFooter>
       </Modal>
       <div className='DBox'>
@@ -170,7 +199,7 @@ export default class ProductForm extends Component {
       <Button className='ButtSub' color ={bgcolor} onClick={this.Submit}>
               Submit
       </Button>
-      <h>{this.state.Catagory} {this.state.Brand} {this.state.Name} {this.state.Version}</h>
+      {/* <h>{this.state.Catagory} {this.state.Brand} {this.state.Name} {this.state.Version}</h> */}
       </center>
     );
   }
