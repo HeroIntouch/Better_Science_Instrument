@@ -33,6 +33,7 @@ class App extends React.Component {
     const current = isLogginActive ? "Register" : "Login";
     const currentActive = isLogginActive ? "login" : "register";
     const codeBG = this.props.codeBGcolor;
+    const TXcolor = this.props.TXcolor;
     return (
       <div className="App">
         <div className="login">
@@ -45,6 +46,7 @@ class App extends React.Component {
             )}
           </div>
           <RightSide 
+            TXcolor={TXcolor}
             codeBGcolor={codeBG}
             current={current}
             currentActive={currentActive}
@@ -61,7 +63,7 @@ const RightSide = props => {
   return (
     <div
       className="right-side"
-      style={{backgroundColor:props.codeBGcolor}}
+      style={{backgroundColor:props.codeBGcolor, color:props.TXcolor}}
       ref={props.containerRef}
       onClick={props.onClick}
     >

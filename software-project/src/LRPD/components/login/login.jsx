@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useReducer } from "react";
 import loginImg from "../../../LRPD/login.svg";
 import { auth } from '../../firebase/index'
 
-export class Login extends React.Component {
+var admin_state = -1;
+var user_state = -1;
+
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
       password: '',
       currentUser: null,
-      message: ''
+      message: '',
     }
   }
 
@@ -51,25 +54,53 @@ export class Login extends React.Component {
       })
   }
   logout = e => {
+    user_state = -1
+    admin_state = -1
     e.preventDefault()
     auth.signOut().then(response => {
       this.setState({
-        currentUser: null
+        currentUser: null,
       })
     })
   }
 
   render() {
     const { message, currentUser } = this.state
+    var dataEmailAdmin = ["asdf@hotmail.com", "hero@hotmail.com"];
+    var dataEmailUser = ["user1@hotmail.com", "as@hotmail.com"];
+
+    
 
     if (currentUser) {
-      return (
-        <div>
-          <p>Hello {currentUser.email}</p>
-          <button onClick={this.logout}>Logout</button>
-        </div>
-      )
+      console.log("back : " + currentUser);
+
+      admin_state = dataEmailAdmin.indexOf(currentUser.email)
+      user_state = dataEmailUser.indexOf(currentUser.email)
+
+      if (admin_state != -1) {
+        return (
+          <div>
+            <p>Hello {currentUser.email}</p>
+            <p>Hello Admin</p>
+            <button onClick={this.logout}>Logout</button>
+
+          </div>
+        )
+      }
+
+      else if (user_state != -1) {
+        return (
+          <div>
+            <p>Hello {currentUser.email}</p>
+            <p>Hello User</p>
+            <button onClick={this.logout}>Logout</button>
+
+          </div>
+        )
+      }
     }
+
+
 
 
     return (
@@ -78,7 +109,7 @@ export class Login extends React.Component {
         <div className="image">
           <img src={loginImg} />
         </div>
-        <form onSubmit={this.onSubmit}>
+        <form id="input" onSubmit={this.onSubmit}>
           <div className="content">
             <div className="form">
               <div className="form-group">
@@ -105,3 +136,5 @@ export class Login extends React.Component {
     )
   }
 }
+
+export { Login, admin_state, user_state }

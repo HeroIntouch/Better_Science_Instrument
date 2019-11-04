@@ -14,7 +14,6 @@ function Product(){
         <div>
             <NavBar logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} />
             <div className='page'>
-                <div><TableCategory /></div>
                 <div><TableProduct /></div>
             </div>
         </div>
