@@ -38,3 +38,8 @@ export const changeDark = () => {
         type: 'CHANGEDARK'
     };
 };
+export const changURL = () => {
+    return{
+        type: 'CHANGEURL'
+    }
+}
