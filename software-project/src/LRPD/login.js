@@ -29,9 +29,9 @@ function App() {
 
   return (
     <div>
-      <NavBar logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} /><br />
-      <LoginReg codeBGcolor={codeBGcolor} TXcolor={TXcolor} /><br />
-      <ContactUs bgcolor={BGcolor} />
+      <NavBar logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor}/><br/>
+      <LoginReg codeBGcolor={codeBGcolor} TXcolor={TXcolor}/><br/>
+      <ContactUs bgcolor={BGcolor}/>
     </div>
   );
 }
