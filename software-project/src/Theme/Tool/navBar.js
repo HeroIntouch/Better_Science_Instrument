@@ -29,6 +29,12 @@ export default class Example extends React.Component {
   }
   render() {
     let txColor = this.props.txColor;
+    let navItem;
+    if(this.props.ad){
+      navItem = <NavItem><Link to="/edithomepage"><NavLink><div style={{color:txColor}}>Edit</div></NavLink></Link></NavItem>
+    } else {
+      navItem = null
+    }
     return (
       <div>
         <Navbar color={this.props.bgcolor} light expand="md">
@@ -36,6 +42,7 @@ export default class Example extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
+            {navItem}
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret style={{color:txColor}}>
                   Item list

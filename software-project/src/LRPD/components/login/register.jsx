@@ -7,7 +7,7 @@ export class Register extends React.Component {
     }
 
     render() {
-        return <div className="base-container">
+        return (<div className="base-container">
             <div className="header">Register</div>
             <div className="image">
                 <img src={loginImg} />
@@ -35,5 +35,5 @@ export class Register extends React.Component {
                 </button>
             </div>
         </div>
-    }
+        )}
 }

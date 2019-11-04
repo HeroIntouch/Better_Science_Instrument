@@ -4,29 +4,31 @@ import { auth } from '../../firebase/index'
 import { useDispatch } from 'react-redux';
 import { changeUserStateLogin, changeAdminStateLogin, changeUserStateLogout, changeAdminStateLogout } from '../../../actions';
 
-var admin_state = -1;
-var user_state = -1;
 
-class Login extends React.Component {
+
+export class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      admin_state: -1,
+      user_state: -1,
       email: '',
       password: '',
       currentUser: null,
       message: '',
     }
+    // this.onConfirmClick = this.onConfirmClick.bind(this)
   }
 
-  componentDidMount() {
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        this.setState({
-          currentUser: user
-        })
-      }
-    })
-  }
+  // componentDidMount() {
+  //   auth.onAuthStateChanged(user => {
+  //     if (user) {
+  //       this.setState({
+  //         currentUser: user
+  //       })
+  //     }
+  //   })
+  // }
 
 
   onChange = e => {
@@ -56,46 +58,73 @@ class Login extends React.Component {
       })
   }
   logout = e => {
-    user_state = -1
-    admin_state = -1
     e.preventDefault()
     auth.signOut().then(response => {
       this.setState({
         currentUser: null,
+        email:'',
+        password:'',
+        user_state: -1,
+        admin_state: -1
       })
+      this.onConfirmClick()
     })
   }
+
+  onConfirmClick = () => {
+    var order = null
+    console.log(this.state.email)
+    console.log(this.state.admin_state + " , " + this.state.user_state)
+    // admin login
+    if (this.state.admin_state != -1 && this.state.user_state == -1) {
+      console.log(111)
+      order = 1
+    }
+    // logout
+    else if (this.state.admin_state == -1 && this.state.user_state == -1) {
+      console.log(222)
+      order = 2
+    // user login
+    } else if (this.state.admin_state == -1 && this.state.user_state != -1) {
+      console.log(333)
+      order = 3
+    }
+    console.log(order)
+    this.props.ufo(order)
+  }
+
+  
 
   render() {
     const { message, currentUser } = this.state
     var dataEmailAdmin = ["asdf@hotmail.com", "hero@hotmail.com"];
     var dataEmailUser = ["user1@hotmail.com", "as@hotmail.com"];
 
-    
-
     if (currentUser) {
-      console.log("back : " + currentUser);
+      console.log(currentUser)
+      this.state.admin_state = dataEmailAdmin.indexOf(currentUser.email)
+      this.state.user_state = dataEmailUser.indexOf(currentUser.email)
 
-      admin_state = dataEmailAdmin.indexOf(currentUser.email)
-      user_state = dataEmailUser.indexOf(currentUser.email)
-
-      if (admin_state != -1) {
+      this.onConfirmClick()
+      if (this.state.admin_state != -1) {
+        
         return (
           <div>
             <p>Hello {currentUser.email}</p>
             <p>Hello Admin</p>
-            <button name="click_logout" onClick={this.logout}>Logout</button>
+            <button onClick={this.logout}>Logout</button>
 
           </div>
         )
       }
 
-      else if (user_state != -1) {
+      else if (this.state.user_state != -1) {
+        
         return (
           <div>
             <p>Hello {currentUser.email}</p>
             <p>Hello User</p>
-            <button name="click_logout" onClick={this.logout}>Logout</button>
+            <button onClick={this.logout}>Logout</button>
 
           </div>
         )
@@ -135,5 +164,3 @@ class Login extends React.Component {
     )
   }
 }
-
-export { Login, admin_state, user_state }
