@@ -42,7 +42,6 @@ class herojuulek extends React.Component{
 
     doohee = (event) => {
         event.preventDefault();
-
         db.collection('User').get().then(docs => {
                 docs.forEach(doc => {
                         // this.love(doc);

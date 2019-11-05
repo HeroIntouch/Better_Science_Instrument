@@ -17,12 +17,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "reactstrap": "^8.0.1",
-<<<<<<< HEAD
-    "redux": "^4.0.4"
-=======
     "redux": "^4.0.4",
     "styled-components": "^4.4.1"
->>>>>>> 464b750985cd6067141a0d9229309e0c78ee8b7d
   },
   "scripts": {
     "start": "react-scripts start",

@@ -2,35 +2,40 @@ import React, { useReducer } from "react" ;
 import loginImg from "../../../LRPD/login.svg" ;
 import { auth } from '../../firebase/index' ;
 import { useDispatch } from 'react-redux' ;
+import {db} from '../../../../src/firebase';
 import { changeUserStateLogin, changeAdminStateLogin, changeUserStateLogout, changeAdminStateLogout } from '../../../actions' ;
 
 var admin_state = -1 ;
 var user_state = -1 ;
 
+var admin_state = null
+var user_state = null
 
 export class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      admin_state: -1,
-      user_state: -1,
       email: '',
       password: '',
       currentUser: null,
       message: '',
+      // dataEmailAdmin : ["asdf@hotmail.com", "hero@hotmail.com"],
+      // dataEmailUser : ["user1@hotmail.com"]
+      dataEmailAdmin : [],
+      dataEmailUser : []
     }
     // this.onConfirmClick = this.onConfirmClick.bind(this)
   }
 
-  // componentDidMount() {
-  //   auth.onAuthStateChanged(user => {
-  //     if (user) {
-  //       this.setState({
-  //         currentUser: user
-  //       })
-  //     }
-  //   })
-  // }
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          currentUser: user
+        })
+      }
+    })
+  }
 
 
   onChange = e => {
@@ -50,7 +55,7 @@ export class Login extends React.Component {
       .signInWithEmailAndPassword(email, password)
       .then(response => {
         this.setState({
-          currentUser: response.user
+          currentUser: response.user,
         })
       })
       .catch(error => {
@@ -65,10 +70,10 @@ export class Login extends React.Component {
       this.setState({
         currentUser: null,
         email:'',
-        password:'',
-        user_state: -1,
-        admin_state: -1
+        password:''
       })
+      user_state = -1
+      admin_state = -1
       this.onConfirmClick()
     })
   }
@@ -76,18 +81,18 @@ export class Login extends React.Component {
   onConfirmClick = () => {
     var order = null
     console.log(this.state.email)
-    console.log(this.state.admin_state + " , " + this.state.user_state)
+    console.log(admin_state + " , " + user_state)
     // admin login
-    if (this.state.admin_state != -1 && this.state.user_state == -1) {
+    if (admin_state != -1 && user_state == -1) {
       console.log(111)
       order = 1
     }
     // logout
-    else if (this.state.admin_state == -1 && this.state.user_state == -1) {
+    else if (admin_state == -1 && user_state == -1) {
       console.log(222)
       order = 2
     // user login
-    } else if (this.state.admin_state == -1 && this.state.user_state != -1) {
+    } else if (admin_state == -1 && user_state != -1) {
       console.log(333)
       order = 3
     }
@@ -99,16 +104,25 @@ export class Login extends React.Component {
 
   render() {
     const { message, currentUser } = this.state
-    var dataEmailAdmin = ["asdf@hotmail.com", "hero@hotmail.com"];
-    var dataEmailUser = ["user1@hotmail.com", "as@hotmail.com"];
+    db.collection('Members').get().then(docs => {
+      docs.forEach(doc => {
+              if(doc.data().rank === 'admin'){
+                this.state.dataEmailAdmin.push(doc.data().email)
+              }
+              else if(doc.data().rank === 'user'){
+                this.state.dataEmailUser.push(doc.data().email)
+              }
+          }
+      )
+})
 
     if (currentUser) {
       console.log(currentUser)
-      this.state.admin_state = dataEmailAdmin.indexOf(currentUser.email)
-      this.state.user_state = dataEmailUser.indexOf(currentUser.email)
+      admin_state = this.state.dataEmailAdmin.indexOf(currentUser.email)
+      user_state = this.state.dataEmailUser.indexOf(currentUser.email)
 
       this.onConfirmClick()
-      if (this.state.admin_state != -1) {
+      if (admin_state != -1 || this.props.ad) {
         
         return (
           <div>
@@ -120,7 +134,7 @@ export class Login extends React.Component {
         )
       }
 
-      else if (this.state.user_state != -1) {
+      else if (user_state != -1 || this.props.us) {
         
         return (
           <div>

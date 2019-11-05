@@ -15,7 +15,7 @@ function App() {
   const dispatch = useDispatch();
 
   const onConfirm = (order) => {
-    if(order === 1){
+    if(order == 1){
       dispatch(changeAdminStateLogin())
       return 1
     } else if(order == 2){
@@ -31,7 +31,7 @@ function App() {
   return (
     <div>
       <NavBar us={USERstate} ad={ADMINstate} logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} /><br />
-      <LoginReg codeBGcolor={codeBGcolor} TXcolor={TXcolor} confirm={onConfirm} /><br />
+      <LoginReg us={USERstate} ad={ADMINstate} codeBGcolor={codeBGcolor} TXcolor={TXcolor} confirm={onConfirm} /><br />
       <ContactUs bgcolor={BGcolor} />
     </div>
   );
