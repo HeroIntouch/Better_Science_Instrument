@@ -24,11 +24,14 @@ class homepage extends React.Component{
             Address: '',
             Email: '',
             Name: '',
-            Tel: ''
+            Tel: '',
+            stState: true
         }
     }
-    render(){
-            
+    
+    start(){
+        if(this.state.stState===true){
+            this.setState({stState:false})
         db.collection('Promotion').get().then(snapshot => {
             snapshot.docs.forEach(doc => {
                 if(doc.id == 1){
@@ -58,6 +61,10 @@ class homepage extends React.Component{
                 this.setState({Tel: doc.data().tel})
             })
           })
+        }
+    }
+    render(){
+        this.start()
         return(
             <div>
                 <section className = 'promotion'>
@@ -97,7 +104,7 @@ class homepage extends React.Component{
                             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                             </Carousel.Caption>
                         </Carousel.Item>
-    </Carousel>
+                </Carousel>
                 </section>
                 <section className = 'recommended'>
                     <div className='recommended-grid'>
