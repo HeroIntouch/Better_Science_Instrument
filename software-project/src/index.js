@@ -14,6 +14,7 @@ import Test from './Animation/index.js'
 import Generation from './Generate/Generate';
 
 
+import ProductEdit from './Product_Edit'; 
 const store = createStore(
     allReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -25,11 +26,16 @@ ReactDOM.render(
             <Switch>
                 <Route path="/" exact component={DownloadUser} />
                 <Route path="/edittheme" component={EditTheme} />
-                <Route path="/product" component={Product} />
+
                 <Route path="/profileUser" component={ProfileUser} />
+
+                {/* <Route path="/homepage" component={Homepage} /> */}
+                <Route path="/product/:iaun" component={Product} />
+                {/* <Route path="/profileUser" component={ProfileUser} />
                 <Route path="/login" component={Login} />
-                <Route path="/downloadUser" component={DownloadUser} />
+                <Route path="/downloadUser" component={DownloadUser} /> */}
                 <Route path="/edithomepage" component={EditHomepage} />
+                <Route path="/productedit" component={ProductEdit} />
             </Switch>
         </Router>
     </Provider>, document.getElementById('root'));

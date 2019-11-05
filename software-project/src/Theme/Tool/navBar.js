@@ -12,21 +12,45 @@ import {
   DropdownMenu,
   DropdownItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import {firebase} from '../../edit_homepage/firebase';
 
 export default class Example extends React.Component {
   constructor(props) {
     super(props);
-
-    this.toggle = this.toggle.bind(this);
+    this.toggle = this.toggle.bind(this)
     this.state = {
-      isOpen: false
-    };
+      isOpen: false,
+      Hero: [],
+      
+    }
+    this.toggle2 = this.toggle2.bind(this)
+    //this.toggle3 = this.toggle3.bind(this)
   }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
+  toggle2=()=>{
+    firebase.database().ref('Product/').on('value', (data)=>{
+      let Get = Object.keys(data.toJSON())
+      let k = []
+      //console.log(Get)
+      for(let i in Get){
+        console.log(Get[i])
+        let path = '/product/:'+Get[i]
+        console.log(path)
+        k.push(
+          <Link to={path} >
+              <DropdownItem>
+                {Get[i]}
+              </DropdownItem>
+          </Link>
+        )
+      }
+      this.setState({Hero:k})
+    })
   }
+  toggle=()=>{
+    this.setState({isOpen: !this.state.isOpen});
+  }
+  
+  
   render() {
     let txColor = this.props.txColor;
     let navItem;
@@ -44,14 +68,17 @@ export default class Example extends React.Component {
             <Nav className="ml-auto" navbar>
             {navItem}
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret style={{color:txColor}}>
+                <DropdownToggle nav caret style={{color:txColor}} onClick={this.toggle2}>
                   Item list
                 </DropdownToggle>
-                <DropdownMenu right>
-                  <Link to='/product'><DropdownItem>
-                    1
-                  </DropdownItem></Link>
-                  <Link to='/profileUser'><DropdownItem>
+                <DropdownMenu right >
+                  {this.state.Hero}
+                  {/* <Link to='/product' onClick={this.cleardata}>
+                    <DropdownItem>
+                    Iphone
+                  </DropdownItem></Link> */}
+                  <Link to='/profileUser' >
+                    <DropdownItem>
                     proflieUser
                   </DropdownItem></Link>
                 </DropdownMenu>
