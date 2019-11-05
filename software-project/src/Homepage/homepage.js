@@ -24,11 +24,14 @@ class homepage extends React.Component{
             Address: '',
             Email: '',
             Name: '',
-            Tel: ''
+            Tel: '',
+            stState: true
         }
     }
-    render(){
-            
+
+    start(){
+        if(this.state.stState===true){
+            this.setState({stState:false})
         db.collection('Promotion').get().then(snapshot => {
             snapshot.docs.forEach(doc => {
                 if(doc.id == 1){
@@ -40,28 +43,39 @@ class homepage extends React.Component{
                 if(doc.id == 3){
                     this.setState({Promo3: doc.data().Link})             
                 }
+                console.log("2");
             })
           })
     
         db.collection('Mission').get().then(snapshot => {
             snapshot.docs.forEach(doc => {
-                this.setState({Mission: doc.data().Link})             
+                this.setState({Mission: doc.data().Link})   
+                console.log("3");
+          
             })
           })
 
-        
         db.collection('contract').get().then(snapshot => {
             snapshot.docs.forEach(doc => {
                 this.setState({Address: doc.data().address})
                 this.setState({Email: doc.data().email})
                 this.setState({Name: doc.data().name})
                 this.setState({Tel: doc.data().tel})
+                console.log("4");
+
             })
-          })
+        })}
+        
+    }
+    
+    render(){
+            
+        this.start()
+
         return(
             <div>
                 <section className = 'promotion'>
-                    <Carousel pauseOnHover={false}>
+                <Carousel pauseOnHover={false}>
                         <Carousel.Item >
                             <img
                             className="d-block w-100"
@@ -97,7 +111,7 @@ class homepage extends React.Component{
                             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                             </Carousel.Caption>
                         </Carousel.Item>
-    </Carousel>
+                </Carousel>
                 </section>
                 <section className = 'recommended'>
                     <div className='recommended-grid'>
