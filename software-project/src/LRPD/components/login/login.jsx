@@ -1,11 +1,11 @@
-import React, { useReducer } from "react";
-import loginImg from "../../../LRPD/login.svg";
-import { auth } from '../../firebase/index'
-import { useDispatch } from 'react-redux';
-import { changeUserStateLogin, changeAdminStateLogin, changeUserStateLogout, changeAdminStateLogout } from '../../../actions';
+import React, { useReducer } from "react" ;
+import loginImg from "../../../LRPD/login.svg" ;
+import { auth } from '../../firebase/index' ;
+import { useDispatch } from 'react-redux' ;
+import { changeUserStateLogin, changeAdminStateLogin, changeUserStateLogout, changeAdminStateLogout } from '../../../actions' ;
 
-var admin_state = -1;
-var user_state = -1;
+var admin_state = -1 ;
+var user_state = -1 ;
 
 class Login extends React.Component {
   constructor(props) {

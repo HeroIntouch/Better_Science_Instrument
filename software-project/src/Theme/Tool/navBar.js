@@ -12,11 +12,11 @@ import {
   DropdownMenu,
   DropdownItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import {storage,db,auth} from '../../firebase';
 
 export default class Example extends React.Component {
   constructor(props) {
     super(props);
-
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false
@@ -29,6 +29,16 @@ export default class Example extends React.Component {
   }
   render() {
     let txColor = this.props.txColor;
+    db.collection('Members').get().then(mails => {
+            mails.forEach(mail => {
+                    // this.love(doc);
+                    if(mail.data().rank == 'admin' && mail.id == this.props.email){
+                      
+                    }
+                }
+            )
+    })
+    
     return (
       <div>
         <Navbar color={this.props.bgcolor} light expand="md">

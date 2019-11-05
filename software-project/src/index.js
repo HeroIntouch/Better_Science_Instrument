@@ -21,6 +21,7 @@ ReactDOM.render(
         <Router>
             <Switch>
                 <Route path="/" exact component={EditTheme} />
+                {/* <Route path="/" exact component={Tutorial} /> */}
                 <Route path="/homepage" component={Homepage} />
                 <Route path="/product" component={Product} />
                 <Route path="/profileUser" component={ProfileUser} />
