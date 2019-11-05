@@ -49,7 +49,10 @@ export default class Example extends React.Component {
   toggle=()=>{
     this.setState({isOpen: !this.state.isOpen});
   }
-  
+
+  fn=()=>{
+
+  }
   
   render() {
     let txColor = this.props.txColor;
@@ -58,10 +61,15 @@ export default class Example extends React.Component {
     if(this.props.ad){
       navItem1 = <NavItem><Link to="/edithomepage"><NavLink><div style={{color:txColor}}>Edit</div></NavLink></Link></NavItem>
       navItem2 = <NavItem><Link to="/generate"><NavLink><div style={{color:txColor}}>Generate</div></NavLink></Link></NavItem>
+    } else if(this.props.us){
+      navItem1 = <NavItem><Link to="/downloaduser"><NavLink><div style={{color:txColor}}>Download</div></NavLink></Link></NavItem>
+      navItem2 = null
     } else {
       navItem1 = null
       navItem2 = null
     }
+
+
     return (
       <div>
         <Navbar color={this.props.bgcolor} light expand="md">
@@ -88,7 +96,7 @@ export default class Example extends React.Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <Link to="/login"><NavLink><div style={{color:txColor}}>{this.props.ad ? "logout" : "login"}</div></NavLink></Link>
+                <Link to="/login"><NavLink><div style={{color:txColor}}>{this.props.ad || this.props.us ? "logout" : "login"}</div></NavLink></Link>
               </NavItem>
               <NavItem>
               <Link to="/"><NavLink><div style={{color:txColor}}>Search</div></NavLink></Link>
