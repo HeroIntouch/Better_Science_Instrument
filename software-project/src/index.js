@@ -11,7 +11,7 @@ import EditHomepage from './edit_homepage/App';
 import Homepage from './Homepage';
 import { Product } from './Product/Product';
 import Test from './Animation/index.js'
-import Generation from './Generate/Generate';
+import Generation from './Generate';
 
 
 import ProductEdit from './Product_Edit'; 
