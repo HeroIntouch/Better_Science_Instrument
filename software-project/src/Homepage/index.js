@@ -1,5 +1,5 @@
 import React from 'react';
-import Homepage from "./App";
+import Homepage from "./homepage";
 import NavBar from "../Theme/Tool/navBar";
 import { useSelector } from 'react-redux';
 

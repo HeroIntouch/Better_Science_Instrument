@@ -8,9 +8,9 @@ import allReducer from './reducer';
 import { Provider } from 'react-redux';
 import { Login, DownloadUser, ProfileUser } from './LRPD';
 import EditHomepage from './edit_homepage/App';
-import Homepage from './Homepage';
+import Homepage from './Homepage/';
 import { Product } from './Product/Product';
-import Test from './Animation/index.js'
+import Test from './Animation/swiper/index';
 import Generation from './Generate/Generate';
 
 const store = createStore(
