@@ -26,16 +26,11 @@ ReactDOM.render(
             <Switch>
                 <Route path="/" exact component={Homepage} />
                 <Route path="/edittheme" component={EditTheme} />
-
                 <Route path="/generate" component={Generation} />
-                <Route path="/product" component={Product} />
                 <Route path="/profileUser" component={ProfileUser} />
-
-                {/* <Route path="/homepage" component={Homepage} /> */}
                 <Route path="/product/:iaun" component={Product} />
-                {/* <Route path="/profileUser" component={ProfileUser} />
                 <Route path="/login" component={Login} />
-                <Route path="/downloadUser" component={DownloadUser} /> */}
+                <Route path="/downloadUser" component={DownloadUser} />
                 <Route path="/edithomepage" component={EditHomepage} />
                 <Route path="/productedit" component={ProductEdit} />
             </Switch>
