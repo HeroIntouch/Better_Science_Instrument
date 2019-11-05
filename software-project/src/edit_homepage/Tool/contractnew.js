@@ -12,7 +12,11 @@ class ImageUpload extends Component {
             image: null,
             url: '',
             modal: false,
-            check: false
+            check: false,
+            name: '',
+            email: '',
+            address: '',
+            tel: ''
         }
         // this.handleChange = this
         //     .handleChange
@@ -30,18 +34,20 @@ class ImageUpload extends Component {
         console.log(55555)
         let form = document.querySelector('#input');
         var nm = document.getElementById('name')
-        db.collection('contract').add({
+        db.collection('contract').doc('1').update({
             name: form.name.value,
             email: form.email.value,
             address: form.address.value,
             tel: form.tel.value
-            
-          })
-          form.name.value = '';
-          form.email.value = '';
-          form.address.value = '';
-          form.tel.value = '';
-      }
+
+        })
+        form.name.value = '';
+        form.email.value = '';
+        form.address.value = '';
+        form.tel.value = '';
+    }
+
+
 
 
 
@@ -94,19 +100,31 @@ class ImageUpload extends Component {
             this.toggle()
         }
 
+        // db.collection('contract').get().then(snapshot => {
+        //     snapshot.docs.forEach(doc => {
+        //         if(doc.id == '1'){
+        //             this.setState({name: doc.data().name})
+        //             this.setState({email: doc.data().email})
+        //             this.setState({address: doc.data().address})
+        //             this.setState({tel: doc.data().tel})
+        //         }
+        //     })
+        // })
+
+
         return (
             // <div style = {style}>
             //     <input type = "file" onChange={this.handleChange} />
             //     <Button onClick={this.handleUpload} > Upload </Button>
             // </div>
             <div >
-                <h2> Promotion </h2>
+                <h2> Contract US</h2>
                 <div style={{ padding: 30 }} >
                     <Button outline color="secondary" onClick={this.toggle.bind(this)} block style={{ height: 160 }}>
                         edit
              </Button>
-                    <Modal isOpen={this.state.modal} toggle={this.toggle.bind(this)} className={this.className} style={{ height: 600, width: 600, }}>
-                        <ModalHeader toggle={this.toggle.bind(this)}>Choose Picture</ModalHeader>
+                    <Modal isOpen={this.state.modal} toggle={this.toggle.bind(this)} className={this.className} style={{ height: 600, width: 800, }}>
+                        <ModalHeader toggle={this.toggle.bind(this)}>Fill Out</ModalHeader>
                         <ModalBody>
                             {/* <FormGroup>
               <Label for="exampleCustomFileBrowser">File Browser</Label>
@@ -114,7 +132,7 @@ class ImageUpload extends Component {
             </FormGroup>
                 <input type = "file" onChange={this.handleChange} /> */}
                             <form id="input">
-                                <FormGroup>
+                                {/* <FormGroup>
                                     <Label for="exampleAddress">Name</Label>
                                     <input type="text" name="name" id="name" placeholder="1234 Main St" />
                                 </FormGroup>
@@ -129,11 +147,29 @@ class ImageUpload extends Component {
                                 <FormGroup>
                                     <Label for="exampleAddress2">Tel</Label>
                                     <input type="text" name="tel" id="tel" placeholder="Apartment, studio, or floor" />
-                                </FormGroup>
+                                </FormGroup> */}
+                                <div className="form">
+                                    <div className="form-group">
+                                        <label htmlFor="username">Name : </label>
+                                        <input type="text" name="name"  />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="email">Email : </label>
+                                        <input type="text" name="email"  />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="username">Address: </label>
+                                        <input type="text" name="address"   />
+                                    </div>
+                                    <div className="form-group">
+                                        <label htmlFor="email">Tel : </label>
+                                        <input type="email" name="tel"  />
+                                    </div>
+                                </div>
                             </form>
                         </ModalBody>
                         <ModalFooter>
-                            <Button outline color="secondary" onClick={() => fn()}>SUMMIT</Button>
+                            <Button  color="success" onClick={() => fn()}>SUMMIT</Button>
                             {/* <Button  outline color="secondary" onClick={() => fn()}>SUMMIT</Button> */}
                         </ModalFooter>
                     </Modal>

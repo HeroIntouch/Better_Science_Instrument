@@ -1,6 +1,6 @@
 import React from "react" ;
 import loginImg from "../../../LRPD/login.svg";
-import {auth} from '../../firebase/index'
+import {auth} from '../../../edit_homepage/firebase'
 
 export class Login extends React.Component{
     constructor(props) {

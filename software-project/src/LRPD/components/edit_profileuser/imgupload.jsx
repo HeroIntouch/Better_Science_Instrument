@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {storage} from '../../firebase';
+import {storage} from '../../../edit_homepage/firebase';
 import Plus from "../../profile_user.svg";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, CustomInput, Form, FormGroup, Label } from 'reactstrap';
 

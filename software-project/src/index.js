@@ -8,6 +8,7 @@ import allReducer from './reducer';
 import { Provider } from 'react-redux';
 import { Login, DownloadUser, ProfileUser } from './LRPD';
 import EditHomepage from './edit_homepage/App';
+// import Download from '../src/LRPD/components/download/'
 
 const store = createStore(
     allReducer,
@@ -18,10 +19,10 @@ ReactDOM.render(
     <Provider store={store}>
         <Router>
             <Switch>
-                <Route path="/" exact component={EditTheme} />
+                <Route path="/" exact component={DownloadUser} />
                 <Route path="/profileUser" component={ProfileUser} />
                 <Route path="/login" component={Login} />
-                <Route path="/downloadUser" component={DownloadUser} />
+                {/* <Route path="/downloadUser" component={DownloadUser} /> */}
                 <Route path="/homepage" component={EditHomepage} />
             </Switch>
         </Router>
