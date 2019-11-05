@@ -33,7 +33,7 @@ export default class ProductForm extends Component {
     let x = firebase.database().ref('Product').on('value', (data)=>{
       var BrandData = data.toJSON()
       if(BrandData!== null){var z = Object.keys(BrandData)
-      
+        //console.log(BrandData)
       for(var i in z){
         this.state.options.push({label: z[i]})
       }}
@@ -57,7 +57,6 @@ export default class ProductForm extends Component {
             var z = Object.keys(BrandData)
             let zzz = []
             for(var i in z){
-              console.log(z[i])
               zzz.push({label: z[i]})
             }
             this.setState({optionsB: zzz})
