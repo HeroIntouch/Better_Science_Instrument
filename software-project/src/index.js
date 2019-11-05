@@ -13,6 +13,7 @@ import { Product } from './Product/Product';
 import Test from './Animation/index.js'
 import Generation from './Generate/Generate';
 
+
 const store = createStore(
     allReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -22,7 +23,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router>
             <Switch>
-                <Route path="/" exact component={Homepage} />
+                <Route path="/" exact component={DownloadUser} />
                 <Route path="/edittheme" component={EditTheme} />
                 <Route path="/product" component={Product} />
                 <Route path="/profileUser" component={ProfileUser} />
