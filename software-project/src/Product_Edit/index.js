@@ -8,13 +8,15 @@ export default function Selected()  {
     
     const BGcolor = useSelector(state => state.BGcolor);
     const TXcolor = useSelector(state => state.TXcolor);
+    const USERstate = useSelector(state => state.userstate);
+  const ADMINstate = useSelector(state => state.adminstate);
     let Get = [];
     
     console.log(Get)
     return (
         <div>
-      <NavBar logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} />
-      <EditMenu page="theme" bgcolor={BGcolor} />
+      <NavBar us={USERstate} ad={ADMINstate} logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} />
+      <EditMenu page="product" bgcolor={BGcolor} />
             <Form bgcolor={BGcolor} />
             <div>
                 <Contact bgcolor={BGcolor} />
