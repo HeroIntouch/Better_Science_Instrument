@@ -13,7 +13,6 @@ class editMenu extends Component {
         <center className = "BGeditMenu" style={{padding: "0.5cm"}}>
           <Link to='/edithomepage'><Button outline color={color} className="button">Homepage</Button></Link>
           <Button outline color={color} className="button">Product</Button>
-          <Button outline color={color} className="button">User</Button>
           <Link to='/edittheme'><Button color={color} className="button">Theme</Button></Link>
         </center>
       );
@@ -23,7 +22,6 @@ class editMenu extends Component {
         <center className = "BGeditMenu" style={{padding: "0.5cm"}}>
           <Button color={color} className="button">Homepage</Button>
           <Button outline color={color} className="button">Product</Button>
-          <Button outline color={color} className="button">User</Button>
           <Link to='/edittheme'><Button outline color={color} className="button">Theme</Button></Link>
         </center>
       );
@@ -33,7 +31,6 @@ class editMenu extends Component {
         <center className = "BGeditMenu" style={{padding: "0.5cm"}}>
           <Button outline color={color} className="button">Homepage</Button>
           <Button color={color} className="button">Product</Button>
-          <Button outline color={color} className="button">User</Button>
           <Link to='/edittheme'><Button outline color={color} className="button">Theme</Button></Link>
         </center>
       );
@@ -43,7 +40,6 @@ class editMenu extends Component {
         <center className = "BGeditMenu" style={{padding: "0.5cm"}}>
           <Button outline color={color} className="button">Homepage</Button>
           <Button outline color={color} className="button">Product</Button>
-          <Button color={color} className="button">User</Button>
           <Link to='/edittheme'><Button outline color={color} className="button">Theme</Button></Link>
         </center>
       );
