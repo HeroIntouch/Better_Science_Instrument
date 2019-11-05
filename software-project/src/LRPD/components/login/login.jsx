@@ -20,15 +20,15 @@ export class Login extends React.Component {
     // this.onConfirmClick = this.onConfirmClick.bind(this)
   }
 
-  // componentDidMount() {
-  //   auth.onAuthStateChanged(user => {
-  //     if (user) {
-  //       this.setState({
-  //         currentUser: user
-  //       })
-  //     }
-  //   })
-  // }
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          currentUser: user
+        })
+      }
+    })
+  }
 
 
   onChange = e => {

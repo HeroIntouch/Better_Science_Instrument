@@ -27,10 +27,11 @@ export default class Example extends React.Component {
     //this.toggle3 = this.toggle3.bind(this)
   }
   toggle2=()=>{
+    console.log()
     firebase.database().ref('Product/').on('value', (data)=>{
       let Get = Object.keys(data.toJSON())
       let k = []
-      //console.log(Get)
+      console.log(Get)
       for(let i in Get){
         console.log(Get[i])
         let path = '/product/:'+Get[i]
@@ -85,14 +86,6 @@ export default class Example extends React.Component {
                 </DropdownToggle>
                 <DropdownMenu right >
                   {this.state.Hero}
-                  {/* <Link to='/product' onClick={this.cleardata}>
-                    <DropdownItem>
-                    Iphone
-                  </DropdownItem></Link> */}
-                  <Link to='/profileUser' >
-                    <DropdownItem>
-                    proflieUser
-                  </DropdownItem></Link>
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
