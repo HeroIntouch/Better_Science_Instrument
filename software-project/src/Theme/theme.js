@@ -10,10 +10,12 @@ import { useSelector } from 'react-redux';
 function Theme() {
   const BGcolor = useSelector(state => state.BGcolor);
   const TXcolor = useSelector(state => state.TXcolor);
+  const USERstate = useSelector(state => state.userstate);
+  const ADMINstate = useSelector(state => state.adminstate);
 
   return (
     <div>
-      <NavBar logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} />
+      <NavBar us={USERstate} ad={ADMINstate} logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} />
       <EditMenu page="theme" bgcolor={BGcolor} />
       <center style={{ padding:"0cm 0cm 2cm 0cm" }}>
         <h1 style={{padding:"1cm"}}>Choose your color!</h1> 

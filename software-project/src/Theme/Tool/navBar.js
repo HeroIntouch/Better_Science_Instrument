@@ -29,23 +29,39 @@ export default class Example extends React.Component {
   }
   render() {
     let txColor = this.props.txColor;
+    let navItem1 , navItem2;
     db.collection('Members').get().then(mails => {
             mails.forEach(mail => {
                     // this.love(doc);
                     if(mail.data().rank == 'admin' && mail.id == this.props.email){
-                      
+                      navItem1 = <NavItem><Link to="/edithomepage"><NavLink><div style={{color:txColor}}>Edit</div></NavLink></Link></NavItem>
+                      navItem2 = <NavItem><Link to="/generate"><NavLink><div style={{color:txColor}}>Generate</div></NavLink></Link></NavItem>
+                    }
+                    else if (mail.data().rank == 'user' && mail.id == this.props.email) {
+                      navItem1 = <NavItem><Link to="/edithomepage"><NavLink><div style={{color:txColor}}>Download</div></NavLink></Link></NavItem>
+                      navItem2 = <NavItem><Link to="/edithomepage"><NavLink><div style={{color:txColor}}>Profile</div></NavLink></Link></NavItem>
+                    }
+                    else {
+                      navItem1 = null ,
+                      navItem2 = null
                     }
                 }
             )
-    })
-    
+    }
+  )
+    // if(this.props.ad){
+    //   navItem = <NavItem><Link to="/edithomepage"><NavLink><div style={{color:txColor}}>Edit</div></NavLink></Link></NavItem>
+    // } else {
+    //   navItem = null
+    // }
     return (
       <div>
         <Navbar color={this.props.bgcolor} light expand="md">
-          <Link to='/homepage'><NavbarBrand><div style={{color:txColor}}>{this.props.logo}</div></NavbarBrand></Link>
+          <Link to='/'><NavbarBrand><div style={{color:txColor}}>{this.props.logo}</div></NavbarBrand></Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
+            {navItem}
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret style={{color:txColor}}>
                   Item list

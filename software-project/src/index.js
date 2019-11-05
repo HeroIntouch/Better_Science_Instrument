@@ -10,6 +10,9 @@ import { Login, DownloadUser, ProfileUser } from './LRPD';
 import EditHomepage from './edit_homepage/App';
 import Homepage from './Homepage';
 import { Product } from './Product/Product';
+import Test from './Animation/index.js'
+import Generation from './Generate/Generate';
+
 
 const store = createStore(
     allReducer,
@@ -23,6 +26,8 @@ ReactDOM.render(
                 <Route path="/" exact component={EditTheme} />
                 {/* <Route path="/" exact component={Tutorial} /> */}
                 <Route path="/homepage" component={Homepage} />
+                <Route path="/" exact component={DownloadUser} />
+                <Route path="/edittheme" component={EditTheme} />
                 <Route path="/product" component={Product} />
                 <Route path="/profileUser" component={ProfileUser} />
                 <Route path="/login" component={Login} />

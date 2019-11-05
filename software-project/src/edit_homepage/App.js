@@ -3,7 +3,7 @@ import EditMenu from '../Theme/Tool/editMenu';
 import NavBar from '../Theme/Tool/navBar';
 import Logo from './Tool/edit_home';
 import History from './Tool/history'
-import Us from './Tool/aboutus'
+import Us from './Tool/contractnew'
 import Summit from './Tool/summit'
 import { Container, Row, Col } from 'reactstrap';
 import Pic1 from './components/pic1';
@@ -16,13 +16,16 @@ import './App.css';
 function App() {
   const BGcolor = useSelector(state => state.BGcolor);
   const TXcolor = useSelector(state => state.TXcolor);
+  const USERstate = useSelector(state => state.userstate);
+  const ADMINstate = useSelector(state => state.adminstate);
+
   return (
 
     <div >
-      <NavBar logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} />
+      <NavBar us={USERstate} ad={ADMINstate} logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} />
       <EditMenu page="homepage" bgcolor={BGcolor}/>
 
-      <div style={{ padding: 20 }}>
+      <div style={{ padding: 40 }}>
         <Logo />
         <h2> Promotion </h2>
         <Container style={{ margin: "0px" }}>
@@ -37,7 +40,7 @@ function App() {
 
       </div>
       <div align="center" style={{margin: "1cm"}}>
-        <Summit />
+        {/* <Summit /> */}
       </div>
 
     </div>

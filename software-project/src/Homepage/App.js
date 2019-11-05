@@ -3,9 +3,7 @@ import './App.css';
 import NavBar from '../Theme/Tool/navBar'
 import Promotion from './promotion/promotion'
 import Media from './media/media'
-import Generate from '../Generate/Generate'
 import { db } from '../firebase';
-
 
 class App extends React.Component {
   constructor(props) {

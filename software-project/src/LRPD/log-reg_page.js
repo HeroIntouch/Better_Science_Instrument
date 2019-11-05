@@ -1,6 +1,7 @@
 import React from "react";
 import "./log-reg_page.scss";
-import { Login, Register } from "./components/login/index";
+import { Login } from './components/login';
+import { Register } from './components/login';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class App extends React.Component {
     this.state = {
       isLogginActive: true
     };
+    this.onConfirm = this.onConfirm.bind(this)
   }
 
   componentDidMount() {
@@ -28,6 +30,12 @@ class App extends React.Component {
     this.setState(prevState => ({ isLogginActive: !prevState.isLogginActive }));
   }
 
+  onConfirm(order) {
+    if (this.props.confirm) {
+      this.props.confirm(order)
+    }
+  }
+
   render() {
     const { isLogginActive } = this.state;
     const current = isLogginActive ? "Register" : "Login";
@@ -39,7 +47,7 @@ class App extends React.Component {
         <div className="login">
           <div className="container" ref={ref => (this.container = ref)}>
             {isLogginActive && (
-              <Login containerRef={ref => (this.current = ref)} />
+              <Login ufo={this.onConfirm} containerRef={ref => (this.current = ref)} />
             )}
             {!isLogginActive && (
               <Register containerRef={ref => (this.current = ref)} />

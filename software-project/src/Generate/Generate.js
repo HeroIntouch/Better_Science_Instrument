@@ -2,6 +2,7 @@ import React from 'react'
 import {Button} from 'reactstrap'
 import './Generate.css'
 import TableInfo from './TableInfo'
+import {db} from '../firebase'
 class Generate extends React.Component{
     constructor(props){
         super(props);
@@ -17,15 +18,23 @@ class Generate extends React.Component{
         let name = form.Name.value;
         let brand = form.Brand.value;
         let version = form.Version.value;
+        let keys = Math.random()*(10**16);
         e.preventDefault();
         if(tel === '' || name === '' || brand === '' || version === ''){
             this.setState({key: 'Please check your information.',
         });
         }else{
             this.setState({
-                key: 'Your key is: ' + Math.random()*(10**16),
+                key: 'Your key is: ' + keys,
                 Tel: 'Telephone number : ' + form.Tel.value
             });
+            db.collection('key').doc(keys.toString()).set({
+                Name: form.Name.value,
+                Brand:form.Brand.value,
+                Version:form.Version.value,
+                Status: 'download'
+            });
+
             form.Tel.value = ''
             form.Name.value = ''
             form.Brand.value = ''
