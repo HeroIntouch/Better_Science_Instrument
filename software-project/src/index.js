@@ -12,6 +12,7 @@ import Homepage from './Homepage';
 import { Product } from './Product/Product';
 import Test from './Animation/index.js'
 import Generation from './Generate/Generate';
+import PullCon from './edit_homepage/components/pull_contract';
 
 
 const store = createStore(
@@ -23,7 +24,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router>
             <Switch>
-                <Route path="/" exact component={DownloadUser} />
+                <Route path="/" exact component={EditHomepage} />
                 <Route path="/edittheme" component={EditTheme} />
                 <Route path="/product" component={Product} />
                 <Route path="/profileUser" component={ProfileUser} />
