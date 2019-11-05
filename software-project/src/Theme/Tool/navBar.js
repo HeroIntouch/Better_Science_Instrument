@@ -53,11 +53,14 @@ export default class Example extends React.Component {
   
   render() {
     let txColor = this.props.txColor;
-    let navItem;
+    let navItem1;
+    let navItem2;
     if(this.props.ad){
-      navItem = <NavItem><Link to="/edithomepage"><NavLink><div style={{color:txColor}}>Edit</div></NavLink></Link></NavItem>
+      navItem1 = <NavItem><Link to="/edithomepage"><NavLink><div style={{color:txColor}}>Edit</div></NavLink></Link></NavItem>
+      navItem2 = <NavItem><Link to="/generate"><NavLink><div style={{color:txColor}}>Generate</div></NavLink></Link></NavItem>
     } else {
-      navItem = null
+      navItem1 = null
+      navItem2 = null
     }
     return (
       <div>
@@ -66,7 +69,8 @@ export default class Example extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-            {navItem}
+            {navItem1}
+            {navItem2}
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret style={{color:txColor}} onClick={this.toggle2}>
                   Item list
@@ -84,7 +88,7 @@ export default class Example extends React.Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <Link to="/login"><NavLink><div style={{color:txColor}}>{this.props.log}</div></NavLink></Link>
+                <Link to="/login"><NavLink><div style={{color:txColor}}>{this.props.ad ? "logout" : "login"}</div></NavLink></Link>
               </NavItem>
               <NavItem>
               <Link to="/"><NavLink><div style={{color:txColor}}>Search</div></NavLink></Link>

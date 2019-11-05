@@ -24,9 +24,11 @@ ReactDOM.render(
     <Provider store={store}>
         <Router>
             <Switch>
-                <Route path="/" exact component={DownloadUser} />
+                <Route path="/" exact component={Homepage} />
                 <Route path="/edittheme" component={EditTheme} />
 
+                <Route path="/generate" component={Generation} />
+                <Route path="/product" component={Product} />
                 <Route path="/profileUser" component={ProfileUser} />
 
                 {/* <Route path="/homepage" component={Homepage} /> */}
