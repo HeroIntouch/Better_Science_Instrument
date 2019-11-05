@@ -14,7 +14,7 @@ class editMenu extends Component {
           <Link to='/edithomepage'><Button outline color={color} className="button">Homepage</Button></Link>
           <Button outline color={color} className="button">Product</Button>
           <Button outline color={color} className="button">User</Button>
-          <Link to='/'><Button color={color} className="button">Theme</Button></Link>
+          <Link to='/edittheme'><Button color={color} className="button">Theme</Button></Link>
         </center>
       );
     }
@@ -24,7 +24,7 @@ class editMenu extends Component {
           <Button color={color} className="button">Homepage</Button>
           <Button outline color={color} className="button">Product</Button>
           <Button outline color={color} className="button">User</Button>
-          <Link to='/'><Button outline color={color} className="button">Theme</Button></Link>
+          <Link to='/edittheme'><Button outline color={color} className="button">Theme</Button></Link>
         </center>
       );
     }
@@ -34,7 +34,7 @@ class editMenu extends Component {
           <Button outline color={color} className="button">Homepage</Button>
           <Button color={color} className="button">Product</Button>
           <Button outline color={color} className="button">User</Button>
-          <Link to='/'><Button outline color={color} className="button">Theme</Button></Link>
+          <Link to='/edittheme'><Button outline color={color} className="button">Theme</Button></Link>
         </center>
       );
     }
@@ -44,7 +44,7 @@ class editMenu extends Component {
           <Button outline color={color} className="button">Homepage</Button>
           <Button outline color={color} className="button">Product</Button>
           <Button color={color} className="button">User</Button>
-          <Link to='/'><Button outline color={color} className="button">Theme</Button></Link>
+          <Link to='/edittheme'><Button outline color={color} className="button">Theme</Button></Link>
         </center>
       );
     }
