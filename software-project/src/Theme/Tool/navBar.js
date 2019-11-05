@@ -12,50 +12,63 @@ import {
   DropdownMenu,
   DropdownItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import {storage,db,auth} from '../../firebase';
-
+import {firebase} from '../../firebase';
 export default class Example extends React.Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
-    };
+      isOpen: false,
+      Hero: [],
+      
+    }
+    this.toggle2 = this.toggle2.bind(this)
+    //this.toggle3 = this.toggle3.bind(this)
+  }
+  toggle2=()=>{
+    firebase.database().ref('Product/').on('value', (data)=>{
+      let Get = Object.keys(data.toJSON())
+      let k = []
+      //console.log(Get)
+      for(let i in Get){
+        console.log(Get[i])
+        let path = '/product/:'+Get[i]
+        console.log(path)
+        k.push(
+          <Link to={path} >
+              <DropdownItem>
+                {Get[i]}
+              </DropdownItem>
+          </Link>
+        )
+      }
+      this.setState({Hero:k})
+    })
+  }
+  toggle=()=>{
+    this.setState({isOpen: !this.state.isOpen});
   }
 
+  fn=()=>{
 
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
   }
+  
   render() {
     let txColor = this.props.txColor;
-    let navItem1 , navItem2;
-    db.collection('Members').get().then(mails => {
-            mails.forEach(mail => {
-                    // this.love(doc);
-                    if(mail.data().rank == 'admin' && mail.id == this.props.email){
-                      navItem1 = <NavItem><Link to="/edithomepage"><NavLink><div style={{color:txColor}}>Edit</div></NavLink></Link></NavItem>
-                      navItem2 = <NavItem><Link to="/generate"><NavLink><div style={{color:txColor}}>Generate</div></NavLink></Link></NavItem>
-                    }
-                    else if (mail.data().rank == 'user' && mail.id == this.props.email) {
-                      navItem1 = <NavItem><Link to="/edithomepage"><NavLink><div style={{color:txColor}}>Download</div></NavLink></Link></NavItem>
-                      navItem2 = <NavItem><Link to="/edithomepage"><NavLink><div style={{color:txColor}}>Profile</div></NavLink></Link></NavItem>
-                    }
-                    // else {
-                    //   navItem1 = null ,
-                    //   navItem2 = null
-                    // }
-                }
-            )
+    let navItem1;
+    let navItem2;
+    if(this.props.ad){
+      navItem1 = <NavItem><Link to="/edithomepage"><NavLink><div style={{color:txColor}}>Edit</div></NavLink></Link></NavItem>
+      navItem2 = <NavItem><Link to="/generate"><NavLink><div style={{color:txColor}}>Generate</div></NavLink></Link></NavItem>
+    } else if(this.props.us){
+      navItem1 = <NavItem><Link to="/downloaduser"><NavLink><div style={{color:txColor}}>Download</div></NavLink></Link></NavItem>
+      navItem2 = null
+    } else {
+      navItem1 = null
+      navItem2 = null
     }
-  )
-    // if(this.props.ad){
-    //   navItem = <NavItem><Link to="/edithomepage"><NavLink><div style={{color:txColor}}>Edit</div></NavLink></Link></NavItem>
-    // } else {
-    //   navItem = null
-    // }
+
+
     return (
       <div>
         <Navbar color={this.props.bgcolor} light expand="md">
@@ -66,20 +79,23 @@ export default class Example extends React.Component {
             {navItem1}
             {navItem2}
               <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret style={{color:txColor}}>
+                <DropdownToggle nav caret style={{color:txColor}} onClick={this.toggle2}>
                   Item list
                 </DropdownToggle>
-                <DropdownMenu right>
-                  <Link to='/product'><DropdownItem>
-                    1
-                  </DropdownItem></Link>
-                  <Link to='/profileUser'><DropdownItem>
+                <DropdownMenu right >
+                  {this.state.Hero}
+                  {/* <Link to='/product' onClick={this.cleardata}>
+                    <DropdownItem>
+                    Iphone
+                  </DropdownItem></Link> */}
+                  <Link to='/profileUser' >
+                    <DropdownItem>
                     proflieUser
                   </DropdownItem></Link>
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <Link to="/login"><NavLink><div style={{color:txColor}}>{this.props.ad ? "logout" : "login"}</div></NavLink></Link>
+                <Link to="/login"><NavLink><div style={{color:txColor}}>{this.props.ad || this.props.us ? "logout" : "login"}</div></NavLink></Link>
               </NavItem>
               <NavItem>
               <Link to="/"><NavLink><div style={{color:txColor}}>Search</div></NavLink></Link>

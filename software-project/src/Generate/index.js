@@ -1,9 +1,9 @@
-import React from 'react';
-import Homepage from "./homepage";
-import NavBar from "../Theme/Tool/navBar";
+import React from 'react'
+import NavBar from '../Theme/Tool/navBar'
+import Generate from './Generate'
 import { useSelector } from 'react-redux';
 
-function iaun() {
+function app() {
     const BGcolor = () => {
         return useSelector(state => state.BGcolor);
     } 
@@ -16,12 +16,13 @@ function iaun() {
     const ADMINstate = () => {
         return useSelector(state => state.adminstate)
     }
-    return(
+    return (
         <div>
-            <NavBar us={USERstate()} ad={ADMINstate()} logo="BetterExhibition" log={"log in"} bgcolor={BGcolor()} txColor={TXcolor()} />
-            <Homepage/>
+            <NavBar  us={USERstate()} ad={ADMINstate()} logo="BetterExhibition" log={"log in"} bgcolor={BGcolor()} txColor={TXcolor()}/>
+            <br/><br/>
+            <Generate/>
         </div>
-    );
+    )
 }
 
-export default iaun
+export default app

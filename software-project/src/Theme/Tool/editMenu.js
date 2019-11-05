@@ -12,7 +12,7 @@ class editMenu extends Component {
       return (
         <center className = "BGeditMenu" style={{padding: "0.5cm"}}>
           <Link to='/edithomepage'><Button outline color={color} className="button">Homepage</Button></Link>
-          <Button outline color={color} className="button">Product</Button>
+          <Link to='/productedit'><Button outline color={color} className="button">Product</Button></Link>
           <Link to='/edittheme'><Button color={color} className="button">Theme</Button></Link>
         </center>
       );
@@ -20,8 +20,8 @@ class editMenu extends Component {
     else if (this.props.page === "homepage") {
       return (
         <center className = "BGeditMenu" style={{padding: "0.5cm"}}>
-          <Button color={color} className="button">Homepage</Button>
-          <Button outline color={color} className="button">Product</Button>
+          <Link to='/edithomepage'><Button color={color} className="button">Homepage</Button></Link>
+          <Link to='/productedit'><Button outline color={color} className="button">Product</Button></Link>
           <Link to='/edittheme'><Button outline color={color} className="button">Theme</Button></Link>
         </center>
       );
@@ -29,17 +29,8 @@ class editMenu extends Component {
     else if (this.props.page === "product") {
       return (
         <center className = "BGeditMenu" style={{padding: "0.5cm"}}>
-          <Button outline color={color} className="button">Homepage</Button>
-          <Button color={color} className="button">Product</Button>
-          <Link to='/edittheme'><Button outline color={color} className="button">Theme</Button></Link>
-        </center>
-      );
-    }
-    else if (this.props.page === "user") {
-      return (
-        <center className = "BGeditMenu" style={{padding: "0.5cm"}}>
-          <Button outline color={color} className="button">Homepage</Button>
-          <Button outline color={color} className="button">Product</Button>
+          <Link to='/edithomepage'><Button outline color={color} className="button">Homepage</Button></Link>
+          <Link to='/productedit'><Button color={color} className="button">Product</Button></Link>
           <Link to='/edittheme'><Button outline color={color} className="button">Theme</Button></Link>
         </center>
       );

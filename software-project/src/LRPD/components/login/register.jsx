@@ -3,7 +3,6 @@ import loginImg from "../../login.svg";
 import { storage, db ,auth } from '../../../firebase';
 import { Button, Modal, ModalHeader, ModalBody, ButtonGroup , ModalFooter, CustomInput, Form, FormGroup, Label, Input } from 'reactstrap';
 import CheckUorA from "./chkUserAdmin";
-import NavBar from "../../../../src/Theme/Tool/navBar";
 
 export class Register extends React.Component {
     constructor(props) {
@@ -73,7 +72,6 @@ export class Register extends React.Component {
 
         return (
         <div className="base-container">
-            <NavBar email={this.state.email}/>
             <br />
             <div className="header">Register</div>
             <div className="image">
