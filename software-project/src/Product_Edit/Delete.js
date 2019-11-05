@@ -21,7 +21,8 @@ export default class ProductForm extends Component {
       BrandVal: null,
       NameVal: null,
       VersionVal: null,
-      warning: ''
+      warning: '',
+      CatagoryVal: null
     };
     this.handleChange = this.handleChange.bind(this)
     this.handleChange1 = this.handleChange1.bind(this)
@@ -39,11 +40,12 @@ export default class ProductForm extends Component {
     })
   }
   handleChange = (newValue) => {
+    
     if(newValue !== null){
       if(this.state.Catagory!==newValue.label){
         this.setState({BrandVal:null,Brand:null,BrandOptions:[],Name:null,NameVal:null,NameOptions:[],Version:null,VersionVal:null,Version:[]})
       }
-      this.setState({Catagory : newValue.label});
+      this.setState({Catagory: newValue.label,CatagoryVal:newValue});
       var y = firebase.database().ref('Product/'+newValue.label).on('value', (data)=>{
         var BrandData = data.toJSON()
         if(BrandData !== null){
@@ -127,8 +129,19 @@ export default class ProductForm extends Component {
       path = 'Product/'+this.state.Catagory+path
       console.log(path)
       firebase.database().ref(path).remove();
-      window.location.reload();
-  }
+      this.setState({Catagory: null,CataOptions:[],CatagoryVal:null,BrandVal:null,Brand:null,BrandOptions:[],Name:null,NameVal:null,NameOptions:[],Version:null,VersionVal:null,Version:[]})
+      firebase.database().ref('Product').on('value', (data)=>{
+        var BrandData = data.toJSON()
+        if(BrandData!== null){var z = Object.keys(BrandData)
+          let k =[]
+          for(var i in z){
+            k.push({label: z[i]})
+          }
+          this.setState({CataOptions:k})
+      }
+      this.setState({show2: false})
+      })
+    }
   Submit() {
     if(this.state.Catagory === null){
       this.setState({Show : !this.state.Show})
@@ -177,7 +190,7 @@ export default class ProductForm extends Component {
             <th className='DInputIm'>
             <div>
               <th><h4 className='DTxt'>Catagory :</h4></th>
-              <th><Select onChange={this.handleChange} options={this.state.CataOptions} className = 'InS'/>
+              <th><Select onChange={this.handleChange} value={this.state.CatagoryVal} options={this.state.CataOptions} className = 'InS'/>
               </th>
             </div>
             <div className='DTR'>

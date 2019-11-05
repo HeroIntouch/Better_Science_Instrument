@@ -7,21 +7,21 @@ class TableProduct extends Component{
         super(props);
         this.state = {
           List: [],
-          startState: true
+          startState: true,
+          OldVal: null
     };
     this.start = this.start.bind(this)
-    
     }
     start=()=>{
         
         let y = this.props.Catagory.slice(1)
         if(this.state.startState===true){
         let x = firebase.database().ref('Product/'+y).on('value', (data)=>{
+            this.setState({startState:false})
+            this.setState({List:[],OldVal:this.props.Catagory})
             let BrandData = data.toJSON()
             let z = Object.keys(BrandData)
             let k = []
-            console.log(BrandData)
-            this.setState({List:[]})
             for(var i in z){
                 console.log(BrandData[z[i]])
                 k.push(<div className='category'>
@@ -31,12 +31,15 @@ class TableProduct extends Component{
             }
             this.setState({List:k})
         })
-        this.setState({startState:false})
+        
         //window.location.reload();
     }
     }
     render(){
         this.start()
+        // if(this.state.OldVal!==this.props.Catagory){
+        //     this.setState({startState:true})
+        // }
         return(
             <div className='tableproduct'>
 

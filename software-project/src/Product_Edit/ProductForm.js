@@ -21,7 +21,8 @@ export default class ProductForm extends Component {
       old_name:"",
       CataChange:null,
       success: false,
-      
+      BrandVal: null,
+      CatagoryVal: null,
       image: null
     };
     this.handleChange = this.handleChange.bind(this)
@@ -40,6 +41,7 @@ export default class ProductForm extends Component {
     })
   }
   handleChange = (newValue) => {
+    this.setState({CatagoryVal:newValue})
     if(newValue !== null){
       //if (this.state.old_name !== newValue){
         // if (this.state.optionsB !== []){
@@ -71,7 +73,31 @@ export default class ProductForm extends Component {
   last=()=>{
     this.setState({success:!this.state.success})
     if(this.state.success){
-      window.location.reload();
+      this.setState({
+        Catagory : null,
+        Brand : null,
+        Name : null,
+        Version : null,
+        file : null,
+        Show : false,
+        options: [],
+        optionsB: [],
+        optionN: [],
+        old_name:"",
+        CataChange:null,
+        success: false,
+        BrandVal: null,
+        CatagoryVal: null,
+        image: null
+      })
+      firebase.database().ref('Product').on('value', (data)=>{
+        var BrandData = data.toJSON()
+        if(BrandData!== null){var z = Object.keys(BrandData)
+          //console.log(BrandData)
+        for(var i in z){
+          this.state.options.push({label: z[i]})
+        }}
+      })
     }
   }
   handleChange2 = (newValue) => {
@@ -102,7 +128,15 @@ export default class ProductForm extends Component {
     else{
       const image = this.state.image
       const uploadTask = firebase.storage().ref(`Product/${image.name}`).put(image);
-      uploadTask.on('state_changed',(snapshot)=>{},(error)=>{console.log(error)},
+      uploadTask.on('state_changed',(snapshot)=>{},(error)=>{
+        firebase.database().ref('Product/'+this.state.Catagory+'/'+this.state.Brand+'/'+this.state.Name+'/'+this.state.Version).set({
+          Catagory: this.state.Catagory,
+          Brand: this.state.Brand,
+          Name: this.state.Name,
+          Version: this.state.Version,
+          PictureLink: null
+        });
+      },
       ()=>{
         firebase.storage().ref('Product').child(image.name).getDownloadURL().then(url => {
           firebase.database().ref('Product/'+this.state.Catagory+'/'+this.state.Brand+'/'+this.state.Name+'/'+this.state.Version).set({
@@ -151,11 +185,11 @@ export default class ProductForm extends Component {
             <th className='InputIm'>
               <div>
                 <th><h4 className='Txt'>Catagory :</h4></th>
-                <th><CreatableSelect isClearable options={this.state.options} className = 'In' onChange={this.handleChange}  /></th>
+                <th><CreatableSelect isClearable options={this.state.options} value={this.state.CatagoryVal} className = 'In' onChange={this.handleChange}  /></th>
               </div>
               <div className='TR'>
                 <th><h4 className='Txt'>Brand :</h4></th>
-                <th><CreatableSelect  isClearable  options={this.state.optionsB} className = 'In' onChange={this.handleChange2} value = {this.state.CataChange}/></th>
+                <th><CreatableSelect  isClearable  options={this.state.optionsB} value={this.state.BrandVal} className = 'In' onChange={this.handleChange2} value = {this.state.CataChange}/></th>
               </div>
               <div className='TR'>
                 <th><h4 className='Txt'>Name :</h4></th>
