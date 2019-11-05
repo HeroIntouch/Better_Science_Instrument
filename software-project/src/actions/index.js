@@ -38,8 +38,23 @@ export const changeDark = () => {
         type: 'CHANGEDARK'
     };
 };
-export const changURL = () => {
+export const changeUserStateLogin = () => {
     return{
-        type: 'CHANGEURL'
-    }
-}
+        type: 'CHANGEUSERSTATELOGIN'
+    };
+};
+export const changeAdminStateLogin = () => {
+    return{
+        type: 'CHANGEADMINSTATELOGIN'
+    };
+};
+export const changeUserStateLogout = () => {
+    return{
+        type: 'CHANGEUSERSTATELOGOUT'
+    };
+};
+export const changeAdminStateLogout = () => {
+    return{
+        type: 'CHANGEADMINSTATELOGOUT'
+    };
+};

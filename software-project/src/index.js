@@ -8,7 +8,10 @@ import allReducer from './reducer';
 import { Provider } from 'react-redux';
 import { Login, DownloadUser, ProfileUser } from './LRPD';
 import EditHomepage from './edit_homepage/App';
-// import Download from '../src/LRPD/components/download/'
+import Homepage from './Homepage';
+import { Product } from './Product/Product';
+import Test from './Animation/index.js'
+import Generation from './Generate/Generate';
 
 const store = createStore(
     allReducer,
@@ -19,11 +22,13 @@ ReactDOM.render(
     <Provider store={store}>
         <Router>
             <Switch>
-                <Route path="/" exact component={DownloadUser} />
+                <Route path="/" exact component={Homepage} />
+                <Route path="/homepage" component={Homepage} />
+                <Route path="/product" component={Product} />
                 <Route path="/profileUser" component={ProfileUser} />
                 <Route path="/login" component={Login} />
-                {/* <Route path="/downloadUser" component={DownloadUser} /> */}
-                <Route path="/homepage" component={EditHomepage} />
+                <Route path="/downloadUser" component={DownloadUser} />
+                <Route path="/edithomepage" component={EditHomepage} />
             </Switch>
         </Router>
     </Provider>, document.getElementById('root'));

@@ -16,10 +16,13 @@ import './App.css';
 function App() {
   const BGcolor = useSelector(state => state.BGcolor);
   const TXcolor = useSelector(state => state.TXcolor);
+  const USERstate = useSelector(state => state.userstate);
+  const ADMINstate = useSelector(state => state.adminstate);
+
   return (
 
     <div >
-      <NavBar logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} />
+      <NavBar us={USERstate} ad={ADMINstate} logo="BetterExhibition" log={"log in"} bgcolor={BGcolor} txColor={TXcolor} />
       <EditMenu page="homepage" bgcolor={BGcolor}/>
 
       <div style={{ padding: 40 }}>

@@ -1,7 +1,8 @@
 import React from "react" ;
-import pfUser from "../../profile_user.svg";
+// import pfUser from "../../profile_user.svg";
 import "./styleEdit.scss";
 import { Container, Row, Col , Button } from 'reactstrap';
+import {ImageUpload} from "../../components/edit_profileuser/imgupload"
 
 export class ProfileUser extends React.Component{
     constructor(props) {
@@ -18,10 +19,9 @@ export class ProfileUser extends React.Component{
                 <div className= "header">Profile</div>
                     <div className= "content">
                         <div className="image">
-                            <img src={pfUser} />
+                            {/* <img src={pfUser} /> */}
+                            <ImageUpload/>
                         </div>
-                        <div className= "editBt"><button type = "button" className="sizeEditBt">
-                        Edit </button></div>
                 </div>
             </div>
                     </Col>
