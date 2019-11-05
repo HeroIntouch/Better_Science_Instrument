@@ -47,7 +47,7 @@ class App extends React.Component {
         <div className="login">
           <div className="container" ref={ref => (this.container = ref)}>
             {isLogginActive && (
-              <Login ufo={this.onConfirm} containerRef={ref => (this.current = ref)} />
+              <Login user={this.props.us} admin={this.props.ad} ufo={this.onConfirm} containerRef={ref => (this.current = ref)} />
             )}
             {!isLogginActive && (
               <Register containerRef={ref => (this.current = ref)} />
