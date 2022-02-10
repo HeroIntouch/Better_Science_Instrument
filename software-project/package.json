@@ -48,6 +48,6 @@
   "devDependencies": {
     "redux-devtools": "^3.5.0",
     "firebase": "^7.2.3",
-    "node-sass": "^4.13.0"
+    "node-sass": "^7.0.0"
   }
 }
